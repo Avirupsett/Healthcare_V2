@@ -1,0 +1,296 @@
+[
+ {
+   "Disease": "AIDS",
+   "Symptom_Precaution_0": "Avoid Open Cuts",
+   "Symptom_Precaution_1": "Wear Ppe If Possible",
+   "Symptom_Precaution_2": "Abstinence And Never Sharing Needles",
+   "Symptom_Precaution_3": "Consult Doctor"
+ },
+ {
+   "Disease": "Acne",
+   "Symptom_Precaution_0": "Bath Twice",
+   "Symptom_Precaution_1": "Avoid Fatty Spicy Food",
+   "Symptom_Precaution_2": "Drink Plenty Of Water",
+   "Symptom_Precaution_3": "Avoid Too Many Products"
+ },
+ {
+   "Disease": "Alcoholic hepatitis",
+   "Symptom_Precaution_0": "Stop Alcohol Consumption Or Drink Alcohol In Moderation",
+   "Symptom_Precaution_1": "Protect Yourself From Hepatitis C",
+   "Symptom_Precaution_2": "Check Before Mixing Medications And Alcohol",
+   "Symptom_Precaution_3": "Consult Doctor"
+ },
+ {
+   "Disease": "Allergy",
+   "Symptom_Precaution_0": "Apply Calamine",
+   "Symptom_Precaution_1": "Cover Area With Bandage",
+   "Symptom_Precaution_2": "Avoid Your Allergens.",
+   "Symptom_Precaution_3": "Use Ice To Compress Itching"
+ },
+ {
+   "Disease": "Arthritis",
+   "Symptom_Precaution_0": "Exercise",
+   "Symptom_Precaution_1": "Use Hot And Cold Therapy",
+   "Symptom_Precaution_2": "Try Acupuncture",
+   "Symptom_Precaution_3": "Massage"
+ },
+ {
+   "Disease": "Bronchial Asthma",
+   "Symptom_Precaution_0": "Switch To Loose Cloth",
+   "Symptom_Precaution_1": "Take Deep Breaths",
+   "Symptom_Precaution_2": "Get Away From The Trigger",
+   "Symptom_Precaution_3": "Seek Help"
+ },
+ {
+   "Disease": "Cervical spondylosis",
+   "Symptom_Precaution_0": "Use A Heating Pad Or Cold Pack",
+   "Symptom_Precaution_1": "Exercise",
+   "Symptom_Precaution_2": "Take An Otc Pain Reliever",
+   "Symptom_Precaution_3": "Consult A Doctor"
+ },
+ {
+   "Disease": "Chicken pox",
+   "Symptom_Precaution_0": "Use Neem In Bathing",
+   "Symptom_Precaution_1": "Consume Neem Leaves",
+   "Symptom_Precaution_2": "Take The Vaccine",
+   "Symptom_Precaution_3": "Avoid Public Places"
+ },
+ {
+   "Disease": "Chronic cholestasis",
+   "Symptom_Precaution_0": "Cold Baths",
+   "Symptom_Precaution_1": "Anti Itch Medicine",
+   "Symptom_Precaution_2": "Eat Healthy( Avoid Sugars And Highly Refined Foods, Such As White Bread And Corn Syrup,Processed Meats,Full Fat Dairy Products.)",
+   "Symptom_Precaution_3": "Consult A Doctor"
+ },
+ {
+   "Disease": "Common Cold",
+   "Symptom_Precaution_0": "Drink Vitamin C Rich Drinks",
+   "Symptom_Precaution_1": "Take Vapour",
+   "Symptom_Precaution_2": "Avoid Cold Food",
+   "Symptom_Precaution_3": "Keep Fever In Check"
+ },
+ {
+   "Disease": "Covid",
+   "Symptom_Precaution_0": "Cover Mouth",
+   "Symptom_Precaution_1": "Social Distancing",
+   "Symptom_Precaution_2": "Wear Mask",
+   "Symptom_Precaution_3": "Medication"
+ },
+ {
+   "Disease": "Dengue",
+   "Symptom_Precaution_0": "Drink Papaya Leaf Juice",
+   "Symptom_Precaution_1": "Avoid Fatty Spicy Food",
+   "Symptom_Precaution_2": "Keep Mosquitos Away",
+   "Symptom_Precaution_3": "Keep Hydrated"
+ },
+ {
+   "Disease": "Diabetes ",
+   "Symptom_Precaution_0": "Have Balanced Diet",
+   "Symptom_Precaution_1": "Exercise(Lose Extra Weight)",
+   "Symptom_Precaution_2": "Eat Healthy Plant Foods(Plant Foods Provide Vitamins, Minerals And Carbohydrates In Your Diet.)",
+   "Symptom_Precaution_3": "Consult A Doctor"
+ },
+ {
+   "Disease": "Dimorphic hemorrhoids(piles)",
+   "Symptom_Precaution_0": "Avoid Fatty Spicy Food",
+   "Symptom_Precaution_1": "Consume Witch Hazel",
+   "Symptom_Precaution_2": "Warm Bath With Epsom Salt",
+   "Symptom_Precaution_3": "Consume Aloe Vera Juice"
+ },
+ {
+   "Disease": "Drug Reaction",
+   "Symptom_Precaution_0": "Stop Irritation",
+   "Symptom_Precaution_1": "Consult Nearest Hospital",
+   "Symptom_Precaution_2": "Stop Taking Drug",
+   "Symptom_Precaution_3": "Consult A Doctor"
+ },
+ {
+   "Disease": "Fungal infection",
+   "Symptom_Precaution_0": "Bath Twice",
+   "Symptom_Precaution_1": "Use Detol Or Neem In Bathing Water",
+   "Symptom_Precaution_2": "Keep The Infected Area Dry",
+   "Symptom_Precaution_3": "Use Clean Cloths"
+ },
+ {
+   "Disease": "GERD",
+   "Symptom_Precaution_0": "Avoid Fatty Spicy Food",
+   "Symptom_Precaution_1": "Avoid Lying Down After Eating",
+   "Symptom_Precaution_2": "Maintain Healthy Weight",
+   "Symptom_Precaution_3": "Exercise"
+ },
+ {
+   "Disease": "Gastroenteritis",
+   "Symptom_Precaution_0": "Stop Eating Solid Food For While",
+   "Symptom_Precaution_1": "Try Taking Small Sips Of Water",
+   "Symptom_Precaution_2": "Hands Should Always Be Washed After Personal Toileting, Before Preparing Or Eating Food, And After Removing Gloves Or Other Personal Protective Equipment (Ppe).",
+   "Symptom_Precaution_3": "Ease Back Into Eating"
+ },
+ {
+   "Disease": "Heart attack",
+   "Symptom_Precaution_0": "Call An Ambulance",
+   "Symptom_Precaution_1": "Chew Aspirin",
+   "Symptom_Precaution_2": "Keep Calm",
+   "Symptom_Precaution_3": "Stop Smoking,Be Physically Active Every Day,Reduce Stress"
+ },
+ {
+   "Disease": "Hepatitis A",
+   "Symptom_Precaution_0": "Consult Nearest Hospital For Medication",
+   "Symptom_Precaution_1": "Wash Hands Through",
+   "Symptom_Precaution_2": "Avoid Fatty Spicy Food",
+   "Symptom_Precaution_3": "Drink Bottled Water Rather Than Local Water"
+ },
+ {
+   "Disease": "Hepatitis B",
+   "Symptom_Precaution_0": "Consult Nearest Hospital For Medication",
+   "Symptom_Precaution_1": "Vaccination And Eat Healthy",
+   "Symptom_Precaution_2": "Use Protections",
+   "Symptom_Precaution_3": "Don'T Use Illegal Drugs,Be Cautious About Body Piercing And Tattooing."
+ },
+ {
+   "Disease": "Hepatitis C",
+   "Symptom_Precaution_0": "Consult Nearest Hospital For Medication",
+   "Symptom_Precaution_1": "Vaccination And Eat Healthy",
+   "Symptom_Precaution_2": "Use Protections",
+   "Symptom_Precaution_3": "Don'T Use Illegal Drugs,Be Cautious About Body Piercing And Tattooing."
+ },
+ {
+   "Disease": "Hepatitis D",
+   "Symptom_Precaution_0": "Consult Doctor For Medication",
+   "Symptom_Precaution_1": "Don'T Share Needles To Take Drugs.",
+   "Symptom_Precaution_2": "Use Protections",
+   "Symptom_Precaution_3": "Don'T Use An Infected Person'S Personal Items"
+ },
+ {
+   "Disease": "Hepatitis E",
+   "Symptom_Precaution_0": "Stop Alcohol Consumption, Avoid Foods Heavily Laced With Salt.",
+   "Symptom_Precaution_1": "Good Sanitation And The Availability Of Clean Drinking Water",
+   "Symptom_Precaution_2": "Rest",
+   "Symptom_Precaution_3": "Consult Doctor For Medication"
+ },
+ {
+   "Disease": "Hypertension ",
+   "Symptom_Precaution_0": "Healthy Died,Lose Weight.",
+   "Symptom_Precaution_1": "Salt Baths",
+   "Symptom_Precaution_2": "Reduce Stress,Stop Smoking.",
+   "Symptom_Precaution_3": "Get Proper Sleep"
+ },
+ {
+   "Disease": "Hyperthyroidism",
+   "Symptom_Precaution_0": "Eat Healthy",
+   "Symptom_Precaution_1": "Massage",
+   "Symptom_Precaution_2": "Use Lemon Balm",
+   "Symptom_Precaution_3": "Take Radioactive Iodine Treatment"
+ },
+ {
+   "Disease": "Hypoglycemia",
+   "Symptom_Precaution_0": "Lie Down On Side",
+   "Symptom_Precaution_1": "Check In Pulse",
+   "Symptom_Precaution_2": "Drink Sugary Drinks",
+   "Symptom_Precaution_3": "Consult Doctor"
+ },
+ {
+   "Disease": "Hypothyroidism",
+   "Symptom_Precaution_0": "Reduce Stress",
+   "Symptom_Precaution_1": "Exercise",
+   "Symptom_Precaution_2": "Eat Healthy",
+   "Symptom_Precaution_3": "Get Proper Sleep"
+ },
+ {
+   "Disease": "Impetigo",
+   "Symptom_Precaution_0": "Soak Affected Area In Warm Water",
+   "Symptom_Precaution_1": "Use Antibiotics",
+   "Symptom_Precaution_2": "Remove Scabs With Wet Compressed Cloth",
+   "Symptom_Precaution_3": "Consult Doctor"
+ },
+ {
+   "Disease": "Jaundice",
+   "Symptom_Precaution_0": "Drink Plenty Of Water",
+   "Symptom_Precaution_1": "Consume Milk Thistle",
+   "Symptom_Precaution_2": "Eat Fruits And High Fibre Food",
+   "Symptom_Precaution_3": "Medication"
+ },
+ {
+   "Disease": "Malaria",
+   "Symptom_Precaution_0": "Consult Nearest Hospital",
+   "Symptom_Precaution_1": "Avoid Oily Food",
+   "Symptom_Precaution_2": "Avoid Non Veg Food",
+   "Symptom_Precaution_3": "Keep Mosquitos Out"
+ },
+ {
+   "Disease": "Migraine",
+   "Symptom_Precaution_0": "Don'T Skip Meals,Eat At About The Same Time Every Day.",
+   "Symptom_Precaution_1": "Reduce Stress,Avoid Foods That Trigger Migraines",
+   "Symptom_Precaution_2": "Use Polaroid Glasses In Sun",
+   "Symptom_Precaution_3": "Consult Doctor"
+ },
+ {
+   "Disease": "Osteoarthritis",
+   "Symptom_Precaution_0": "Acetaminophen",
+   "Symptom_Precaution_1": "Consult Nearest Hospital ",
+   "Symptom_Precaution_2": "Salt Baths",
+   "Symptom_Precaution_3": "Control Your Blood Sugar , Keep A Healthy Body Weight"
+ },
+ {
+   "Disease": "Paralysis (brain hemorrhage)",
+   "Symptom_Precaution_0": "Limit Alcohol And Stop Smoking",
+   "Symptom_Precaution_1": "Eat Healthy(Control Your Blood Pressure,Lowering Your Cholesterol Level)",
+   "Symptom_Precaution_2": "Exercise(Lose Excess Weight.)",
+   "Symptom_Precaution_3": "Consult Doctor"
+ },
+ {
+   "Disease": "Paroxysmal Positional Vertigo",
+   "Symptom_Precaution_0": "Lie Down",
+   "Symptom_Precaution_1": "Avoid Sudden Changes In The Body",
+   "Symptom_Precaution_2": "Avoid Abrupt Head Movement",
+   "Symptom_Precaution_3": "Relax"
+ },
+ {
+   "Disease": "Peptic ulcer disease",
+   "Symptom_Precaution_0": "Avoid Fatty Spicy Food",
+   "Symptom_Precaution_1": "Consume Probiotic Food",
+   "Symptom_Precaution_2": "Eliminate Milk",
+   "Symptom_Precaution_3": "Limit Alcohol"
+ },
+ {
+   "Disease": "Pneumonia",
+   "Symptom_Precaution_0": "Consult Doctor For Medication",
+   "Symptom_Precaution_1": "Get Enough Sleep.",
+   "Symptom_Precaution_2": "Quit Smoking, Take Rest",
+   "Symptom_Precaution_3": "Get Enough Sleep."
+ },
+ {
+   "Disease": "Psoriasis",
+   "Symptom_Precaution_0": "Wash Hands With Warm Soapy Water",
+   "Symptom_Precaution_1": "Stop Bleeding Using Pressure",
+   "Symptom_Precaution_2": "Consult Doctor",
+   "Symptom_Precaution_3": "Salt Baths"
+ },
+ {
+   "Disease": "Tuberculosis",
+   "Symptom_Precaution_0": "Cover Mouth",
+   "Symptom_Precaution_1": "Consult Doctor For Airborne Precautions",
+   "Symptom_Precaution_2": "Medication",
+   "Symptom_Precaution_3": "Rest"
+ },
+ {
+   "Disease": "Typhoid",
+   "Symptom_Precaution_0": "Eat High Calorie Vegitables",
+   "Symptom_Precaution_1": "Antiboitic Therapy",
+   "Symptom_Precaution_2": "Consult Doctor",
+   "Symptom_Precaution_3": "Medication"
+ },
+ {
+   "Disease": "Urinary tract infection",
+   "Symptom_Precaution_0": "Drink Plenty Of Water",
+   "Symptom_Precaution_1": "Increase Vitamin C Intake",
+   "Symptom_Precaution_2": "Drink Cranberry Juice",
+   "Symptom_Precaution_3": "Take Probiotics"
+ },
+ {
+   "Disease": "Varicose veins",
+   "Symptom_Precaution_0": "Lie Down Flat And Raise The Leg High",
+   "Symptom_Precaution_1": "Use Ointments",
+   "Symptom_Precaution_2": "Use Vein Compression",
+   "Symptom_Precaution_3": "Don'T Stand Still For Long"
+ }
+]

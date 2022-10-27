@@ -1,0 +1,16 @@
+.pos-rel {
+    position: relative;
+}
+.team-content h3{
+    margin-bottom: 10px;
+    color: var(--heading-color);
+    font-family: "Calibre M";
+}
+.team-content h6{
+    color: var(--first-color);
+    font-family: "SF Mono";
+}
+.team-image img{
+    border-radius: 50%;
+    width: 60%;
+}

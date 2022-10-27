@@ -1,0 +1,170 @@
+[
+ {
+   "Disease": "AIDS",
+   "Medicine": "Delavirdine Or Cobicistat-Elvitegravir-Emtricitabine-Tenofovir"
+ },
+ {
+   "Disease": "Acne",
+   "Medicine": "Persol Ac 2.5 Gel Or Benzac Ac 2.5% Gel"
+ },
+ {
+   "Disease": "Alcoholic hepatitis",
+   "Medicine": "Corticosteroids Or Pentoxifylline"
+ },
+ {
+   "Disease": "Allergy",
+   "Medicine": "Zyrtec-D Or Allegra-D"
+ },
+ {
+   "Disease": "Arthritis",
+   "Medicine": "Advil Or Motrin Ib"
+ },
+ {
+   "Disease": "Bronchial Asthma",
+   "Medicine": "Inhaled Corticosteroids Or Leukotriene Modifiers"
+ },
+ {
+   "Disease": "Cervical spondylosis",
+   "Medicine": "Muscle Relaxants Or Anti-Seizure Medications"
+ },
+ {
+   "Disease": "Chicken pox",
+   "Medicine": "Zovirax Or Sitavig"
+ },
+ {
+   "Disease": "Chronic cholestasis",
+   "Medicine": "Udca Or Ursodiol"
+ },
+ {
+   "Disease": "Common Cold",
+   "Medicine": "Tylenol Or Paracetamol"
+ },
+ {
+   "Disease": "Covid",
+   "Medicine": "Paxlovid Or Veklury Or Tocilizumab Or Favipiravir"
+ },
+ {
+   "Disease": "Dengue",
+   "Medicine": "Paracetamol Or Acetaminophen"
+ },
+ {
+   "Disease": "Diabetes ",
+   "Medicine": "Acarbose Or Gliclazide"
+ },
+ {
+   "Disease": "Dimorphic hemorrhoids(piles)",
+   "Medicine": "Painkillers , Laxatives ,Corticosteroids"
+ },
+ {
+   "Disease": "Drug Reaction",
+   "Medicine": "Benadryl"
+ },
+ {
+   "Disease": "Fungal infection",
+   "Medicine": "Clotrimazole Or Ketoconazole "
+ },
+ {
+   "Disease": "GERD",
+   "Medicine": "Nexium Or Aciphex"
+ },
+ {
+   "Disease": "Gastroenteritis",
+   "Medicine": "Imodium Or Kaopectate"
+ },
+ {
+   "Disease": "Heart attack",
+   "Medicine": "Nitroglycerin Or Morphine"
+ },
+ {
+   "Disease": "Hepatitis A",
+   "Medicine": "There'S Currently No Cure For Hepatitis A, But It Normally Gets Better On Its Own Within A Couple Of Months (Avoid Alcohol , Take Rest)"
+ },
+ {
+   "Disease": "Hepatitis B",
+   "Medicine": "Epivir Or Telbivudine"
+ },
+ {
+   "Disease": "Hepatitis C",
+   "Medicine": "Sofosbuvir Or A Combination Of Elbasvir And Grazoprevir"
+ },
+ {
+   "Disease": "Hepatitis D",
+   "Medicine": "Pegylated Interferon Alpha"
+ },
+ {
+   "Disease": "Hepatitis E",
+   "Medicine": "Ribavirin Monotherapy For At Least 3 Months"
+ },
+ {
+   "Disease": "Hypertension ",
+   "Medicine": "Prinivil Or Zestril"
+ },
+ {
+   "Disease": "Hyperthyroidism",
+   "Medicine": "Carbimazole Or Propylthiouracil"
+ },
+ {
+   "Disease": "Hypoglycemia",
+   "Medicine": "Glucagon Injection Or Glucagon Medicine"
+ },
+ {
+   "Disease": "Hypothyroidism",
+   "Medicine": "Levothyroxine Or Tirosint"
+ },
+ {
+   "Disease": "Impetigo",
+   "Medicine": "Mupirocin Antibiotic Ointment Or Cream Or Penicillin And Antibiotics"
+ },
+ {
+   "Disease": "Jaundice",
+   "Medicine": "Cholestyramine Or Ceftriaxone"
+ },
+ {
+   "Disease": "Malaria",
+   "Medicine": "Malarone Or Qualaquin"
+ },
+ {
+   "Disease": "Migraine",
+   "Medicine": "Nsaids Or Nonsteroidal Anti-Inflammatory Drugs (Motrin Or Naproxen)"
+ },
+ {
+   "Disease": "Osteoarthritis",
+   "Medicine": "Diclofenac Or Naproxen"
+ },
+ {
+   "Disease": "Paralysis (brain hemorrhage)",
+   "Medicine": "An Iv Injection Of Recombinant Tissue Plasminogen Activator (Alteplase Or Tenecteplase)"
+ },
+ {
+   "Disease": "Paroxysmal Positional Vertigo",
+   "Medicine": "Diphenhydramine Or  Lorazepam"
+ },
+ {
+   "Disease": "Peptic ulcer disease",
+   "Medicine": "Protonix Or Aciphex"
+ },
+ {
+   "Disease": "Pneumonia",
+   "Medicine": "Azithromycin Or Erythromycin"
+ },
+ {
+   "Disease": "Psoriasis",
+   "Medicine": "Vitamin A Derivative , Immunosuppressive Drug , Vitamins , Anti-Inflammatory , Steroid"
+ },
+ {
+   "Disease": "Tuberculosis",
+   "Medicine": "Isoniazid (Inh), Rifampin (Rif), Rifabutin, Rifapentine (Rpt), Pyrazinamide (Pza), Or Any Fluoroquinolone"
+ },
+ {
+   "Disease": "Typhoid",
+   "Medicine": "Ciprofloxacin (Cipro) Or Ceftriaxone"
+ },
+ {
+   "Disease": "Urinary tract infection",
+   "Medicine": "Fosfomycin (Monurol) Or Nitrofurantoin (Macrodantin)"
+ },
+ {
+   "Disease": "Varicose veins",
+   "Medicine": "Laser Therapy, Sclerotherapy, Radiofrequency Ablation And Ambulatory Phlebectomy"
+ }
+]

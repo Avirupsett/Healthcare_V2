@@ -1,0 +1,43 @@
+.section-back-icon {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: -50px;
+}
+.pos-rel {
+    position: relative;
+}
+.gray-bg {
+    background: var(--gray-color);
+}
+.box{
+    padding: 53px;
+    background: var(--black-bg);
+    transition: .4s;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.thumb{
+    margin-bottom: 45px;
+}
+
+.content h3{
+    font-family: "Calibre M";
+    margin-bottom: 22px;
+}
+.content p{
+    font-family: "Calibre M";
+    font-weight: normal;
+    line-height: 26px;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+.content a{
+    font-family: "SF Mono";
+    color: var(--text-color);
+    font-weight: 500;
+    margin-top: 5px;
+    display: inline-block;
+}
+

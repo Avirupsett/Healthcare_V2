@@ -1,0 +1,7 @@
+.form-outline .form-control.active~.form-label, .form-outline .form-control:focus~.form-label {
+    transform: translateY(-1.6rem) translateY(0.4rem) scale(0.7);
+}
+
+/* .swal2-styled.swal2-confirm {
+    background-color: var(--first-color) !important;
+} */

@@ -1,0 +1,26 @@
+@media screen and (max-width: 999px) {
+    .form{
+        padding: 0 1.2rem;
+    }
+    .selected{
+        font-size: 14px!important;
+    }
+    .selected2{
+        font-size: 18px!important;
+    }
+    
+}
+
+.rmsc {
+    --rmsc-main: var(--first-color-light) !important;
+}
+li::marker{
+    color: var(--first-color)!important;
+}
+
+.dropdown-heading{
+    background-color: var(--gray-color);
+}
+.dropdown-heading-value{
+    color: var(--text-color);
+}

@@ -1,0 +1,52 @@
+{
+  "name": "healthcare_v2",
+  "proxy": "http://charlesdey007.pythonanywhere.com",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.10.10",
+    "firebase": "^9.12.1",
+    "fontfaceobserver": "^2.3.0",
+    "framer-motion": "^6.5.1",
+    "jspdf": "^2.5.1",
+    "lottie-react": "^2.3.1",
+    "mdb-ui-kit": "^5.0.0",
+    "mui-datatables": "^4.2.2",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-form-stepper": "^2.0.3",
+    "react-icons": "^4.6.0",
+    "react-multi-select-component": "^4.3.4",
+    "react-router-dom": "^5.3.4",
+    "react-scripts": "^5.0.1",
+    "sweetalert2": "^11.6.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+.MuiPaper-root ,.MuiPaper-elevation ,.MuiPaper-rounded ,.MuiPaper-elevation4 ,.tss-58la38-MUIDataTable-paper, .tss-1bk4gez-MUIDataTable-root ,.mui-datatables-11mde6h-MuiPaper-root{
+/* margin-right: 30px; */
+background-color: var(--black-bg);
+}
+.tss-qbo1l6-MUIDataTableToolbar-actions button{
+    color: var(--text-color);
+}
+.mui-datatables-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
+    color: var(--text-color);
+}
+.MuiList-root, .MuiList-padding, .MuiMenu-list, .mui-datatables-6hp17o-MuiList-root-MuiMenu-list{
+    background-color: #fff;
+}
+.tss-1dccma1-MUIDataTablePagination-toolbar {
+    color: var(--text-color);
+    
+}
+.MuiTablePagination-actions button svg{
+    color: var(--text-color);
+}
+.mui-datatables-194a1fa-MuiSelect-select-MuiInputBase-input.mui-datatables-194a1fa-MuiSelect-select-MuiInputBase-input.mui-datatables-194a1fa-MuiSelect-select-MuiInputBase-input{
+    padding-bottom: 17px;
+}
+.mui-datatables-pqjvzy-MuiSvgIcon-root-MuiSelect-icon{
+    fill:var(--text-color) !important;
+}
+.mui-datatables-i4bv87-MuiSvgIcon-root{
+    fill:var(--text-color) !important;
+}
+.mui-datatables-1x51dt5-MuiInputBase-input-MuiInput-input{
+    color: var(--text-color) !important;
+}
+.tss-bd2lw8-MUIDataTableHeadCell-sortActive,.tss-1akey0g-MUIDataTableHeadCell-data{
+    color: #fff !important;
+    font-size: 22px;
+    font-family:'Calibre M';
+    text-align: center;
+    /* padding-left: 18px; */
+    letter-spacing: 2px;
+}
+.tss-1h9t3sl-MUIDataTableHeadCell-sortAction span svg{
+    fill: #fff !important;
+}
