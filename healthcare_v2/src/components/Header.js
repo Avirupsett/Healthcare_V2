@@ -390,7 +390,7 @@ export default function Header() {
                             transition={{ease:[0.645,0.045,0.355,1], duration: 0.50, delay: (width + .75) }}
                         >
                             <button type="button" onClick={handleGetStarted} className="bg btn rounded-9  btn_hover b_size" data-mdb-ripple-color="var(--first-color)" style={{ background: "var(--first-color) var(--mdb-gradient)", borderColor: "var(--first-color)", padding: "16px 22px", fontSize: "15px", color: '#FFF', fontFamily: 'SF Mono' }}>
-                            {isloading===1?<span className="spinner-border  spinner-border-sm mx-1" role="status" aria-hidden="true" ></span>:''}
+                            {isloading===1?<span className="spinner-border  spinner-border-sm me-2" role="status" aria-hidden="true" ></span>:''}
                                 Get Started</button>
                             <button type="button" onClick={(e) => scrolling(e, "info")} className="bg btn btn-outline-primary rounded-9  btn_hover b_size ms-4" data-mdb-ripple-color="var(--first-color)" style={{ background: "var(--black-bg)",border:"1.5px solid", borderColor: "var(--first-color)", padding: "16px 22px", fontSize: "15px", color: 'var(--first-color)', fontFamily: 'SF Mono' }}>Learn More</button>
                         </motion.div>

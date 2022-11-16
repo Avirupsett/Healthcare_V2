@@ -41,7 +41,7 @@ export default function Department() {
                     </div>
                     <div className="content">
                         <h3 className='fs-1' style={{color:"var(--heading-color)"}}>Symptoms</h3>
-                        <p className='fs-6' style={{color:"var(--text-color)"}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, voluptas!</p>
+                        <p className='fs-6' style={{color:"var(--text-color)"}}>The app includes a wide range of symptoms (over 130+ symptoms), from the common cold to more serious conditions.</p>
                         {/* <a className='fs-6' href='/predict'>Click here</a> */}
                     </div>
 
@@ -54,7 +54,7 @@ export default function Department() {
                     </div>
                     <div className="content">
                         <h3 className='fs-1' style={{color:"var(--heading-color)"}}>Prediction</h3>
-                        <p className='fs-6' style={{color:"var(--text-color)"}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, voluptas!</p>
+                        <p className='fs-6' style={{color:"var(--text-color)"}}>The app can predict 40+ diseases, making it a valuable tool for people who want to be proactive about their health.</p>
                         {/* <a className='fs-6' href='/predict'>Click here</a> */}
                     </div>
 
@@ -67,7 +67,7 @@ export default function Department() {
                     </div>
                     <div className="content">
                         <h3 className='fs-1' style={{color:"var(--heading-color)"}}>Medication</h3>
-                        <p className='fs-6' style={{color:"var(--text-color)"}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, voluptas!</p>
+                        <p className='fs-6' style={{color:"var(--text-color)"}}>The app gives recommendations for medicine and precautionary measures that can be taken based on the diseases.</p>
                         {/* <a className='fs-6' href='/predict'>Click here</a> */}
                     </div>
 

@@ -45,8 +45,8 @@ export default function Details() {
                 signInWithCredential(auth, credential).then((result) => {
                     const user = result.user;
                     document.getElementById("form4Example1").value = user.displayName
-                    document.getElementById("form4Example2").value = user.email
-                    if(!user.email){
+                    document.getElementById("form4Example2").value = user.providerData[0].email
+                    if(!user.providerData[0].email){
                         setdisable(false)
                     }
                 }).catch((error) => {
@@ -184,7 +184,7 @@ export default function Details() {
                                 </select>
                             </span>
                             <span>
-                                <select name="year" defaultValue={'1900'} className="form-control" id="form4Exampleyear" style={{ color: "var(--text-color)", backgroundColor: "var(--gray-bg)", fontFamily: "'Calibre R','Inter','San Francisco','SF Pro Text',-apple-system,system-ui,sans-serif", padding: "6px 12px", fontSize: "18px" }}>
+                                <select name="year" defaultValue={'2000'} className="form-control" id="form4Exampleyear" style={{ color: "var(--text-color)", backgroundColor: "var(--gray-bg)", fontFamily: "'Calibre R','Inter','San Francisco','SF Pro Text',-apple-system,system-ui,sans-serif", padding: "6px 12px", fontSize: "18px" }}>
                                     <option value="2030">2030</option>
                                     <option value="2029">2029</option>
                                     <option value="2028">2028</option>

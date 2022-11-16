@@ -3,6 +3,10 @@ import './Team.css'
 // import img from '../assets/section-back-icon.png'
 import img2 from '../assets/section-title-line.png'
 import { motion } from "framer-motion"
+import aritra from "../assets/Aritra.jpeg"
+import priyanka from "../assets/Priyanka.jpeg"
+import debojyoti from "../assets/Debojyoti.jpeg"
+import avirup from "../assets/Avirup.png"
 
 export default function Team() {
     return (
@@ -37,44 +41,44 @@ export default function Team() {
                     <div className='col-xl-6 col-lg-6 col-md-6 pe-5'>
                         <div className='team text-center' style={{marginBottom:"60px"}}>
                         <div className='team-image pos-rel' style={{marginBottom:"45px"}}>
-                            <img src="https://pbs.twimg.com/media/DzauK2ZX4AIpKm_?format=jpg&name=360x360" alt="" />
+                            <img src={avirup} alt="" />
                         </div>
                         <div className="team-content">
-                            <h3 className='fs-2'>Team Name</h3>
-                            <h6 className='fs-5'>Role</h6>
+                            <h3 className='fs-2'>Avirup Sett</h3>
+                            <h6 className='fs-5'>Full-Stack Developer</h6>
                         </div>
                         </div>
                     </div>
                     <div className='col-xl-6 col-lg-6 col-md-6 pe-5'>
                         <div className='team text-center' style={{marginBottom:"60px"}}>
                         <div className='team-image pos-rel' style={{marginBottom:"45px"}}>
-                            <img src="https://pbs.twimg.com/media/DzauK2ZX4AIpKm_?format=jpg&name=360x360" alt="" />
+                            <img src={debojyoti} alt="" />
                         </div>
                         <div className="team-content">
-                            <h3 className='fs-2'>Team Name</h3>
-                            <h6 className='fs-5'>Role</h6>
+                            <h3 className='fs-2'>Debojyoti Sen</h3>
+                            <h6 className='fs-5'>Data Analyst</h6>
                         </div>
                         </div>
                     </div>
                     <div className='col-xl-6 col-lg-6 col-md-6 pe-5'>
                         <div className='team text-center' style={{marginBottom:"60px"}}>
                         <div className='team-image pos-rel' style={{marginBottom:"45px"}}>
-                            <img src="https://pbs.twimg.com/media/DzauK2ZX4AIpKm_?format=jpg&name=360x360" alt="" />
+                            <img src={priyanka} alt="" />
                         </div>
                         <div className="team-content">
-                            <h3 className='fs-2'>Team Name</h3>
-                            <h6 className='fs-5'>Role</h6>
+                            <h3 className='fs-2'>Priyanka Saha</h3>
+                            <h6 className='fs-5'>Data Analyst</h6>
                         </div>
                         </div>
                     </div>
                     <div className='col-xl-6 col-lg-6 col-md-6 pe-5'>
                         <div className='team text-center' style={{marginBottom:"60px"}}>
                         <div className='team-image pos-rel' style={{marginBottom:"45px"}}>
-                            <img src="https://pbs.twimg.com/media/DzauK2ZX4AIpKm_?format=jpg&name=360x360" alt="" />
+                            <img src={aritra} alt="" />
                         </div>
                         <div className="team-content">
-                            <h3 className='fs-2'>Team Name</h3>
-                            <h6 className='fs-5'>Role</h6>
+                            <h3 className='fs-2'>Aritra Das</h3>
+                            <h6 className='fs-5'>Web Developer</h6>
                         </div>
                         </div>
                     </div>

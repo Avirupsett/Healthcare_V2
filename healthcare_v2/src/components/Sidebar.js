@@ -18,13 +18,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { signInWithPopup, GoogleAuthProvider, signInWithCredential, signOut, FacebookAuthProvider } from "firebase/auth";
 import Swal from 'sweetalert2'
-import google_logo from '../assets/8ca486faebd822ddf4baf00321b16df1-google-icon-logo-by-vexels1493381131.png'
-import facebook_logo from '../assets/Facebook_Logo_(2019).png'
 import Dashboard from './Dashboard'
 import { getCountFromServer, getFirestore, query, where } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
 import { getAnalytics, logEvent } from "firebase/analytics";
 import Adminboard from './Adminboard'
+import Footer from './Footer'
 
 export default function Sidebar() {
 
@@ -58,6 +57,7 @@ export default function Sidebar() {
     const [scroll, setScroll] = useState(window.scrollY)
     const handleActive = useCallback(
         () => {
+            if (match.isExact) {
             setScroll(window.scrollY)
             if (scroll >= 0 && scroll <= window.innerHeight) {
                 document.getElementById("home").classList.add('active')
@@ -83,8 +83,9 @@ export default function Sidebar() {
                 document.getElementById("department").classList.remove('active')
                 document.getElementById("team").classList.add('active')
             }
+        }
         },
-        [scroll, setScroll],
+        [scroll, setScroll,match],
     )
 
 
@@ -129,8 +130,8 @@ export default function Sidebar() {
 
     function DarkMode(mode) {
         if (mode === "dark") {
-            document.body.style.backgroundColor = "#0b0a10"
-            document.documentElement.style.setProperty("--black-bg", "#0b0a10")
+            document.body.style.backgroundColor = "#212121"
+            document.documentElement.style.setProperty("--black-bg", "#212121")
             document.documentElement.style.setProperty("--heading-color", "#f2f2f2")
             document.documentElement.style.setProperty("--gray-color", "#1b1a1e")
             document.documentElement.style.setProperty("--text-color", "#8892b0")
@@ -211,7 +212,7 @@ export default function Sidebar() {
                 signInWithCredential(auth, credential).then((result) => {
                     const user = result.user;
                     setavatar(user.photoURL)
-                    setemail(user.email)
+                    setemail(user.providerData[0].email)
                     setfirstname("Hi, " + user.displayName.split(" ")[0] + " 👋")
 
                 }).catch((error) => {
@@ -229,9 +230,12 @@ export default function Sidebar() {
             focusConfirm: false,
             focusDeny: false,
             confirmButtonText:
-                `<img width=30 style="margin-top:-4px;margin-right:1px" src=${google_logo}> Google`,
-            denyButtonText: `<img width=22 style="margin-top:-6px;margin-right:5px" src=${facebook_logo}>Facebook`,
-            icon: "question",
+                `<svg style="margin-bottom:2px;" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 640 512" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M386.061 228.496c1.834 9.692 3.143 19.384 3.143 31.956C389.204 370.205 315.599 448 204.8 448c-106.084 0-192-85.915-192-192s85.916-192 192-192c51.864 0 95.083 18.859 128.611 50.292l-52.126 50.03c-14.145-13.621-39.028-29.599-76.485-29.599-65.484 0-118.92 54.221-118.92 121.277 0 67.056 53.436 121.277 118.92 121.277 75.961 0 104.513-54.745 108.965-82.773H204.8v-66.009h181.261zm185.406 6.437V179.2h-56.001v55.733h-55.733v56.001h55.733v55.733h56.001v-55.733H627.2v-56.001h-55.733z"></path></svg> Google`,
+            denyButtonText: `<svg style="margin-bottom:2px;margin-right:4px" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>Facebook`,
+            iconHtml: `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M832 464h-68V240c0-70.7-57.3-128-128-128H388c-70.7 0-128 57.3-128 128v224h-68c-17.7 0-32 14.3-32 32v384c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V496c0-17.7-14.3-32-32-32zM332 240c0-30.9 25.1-56 56-56h248c30.9 0 56 25.1 56 56v224H332V240zm460 600H232V536h560v304zM484 701v53c0 4.4 3.6 8 8 8h40c4.4 0 8-3.6 8-8v-53a48.01 48.01 0 1 0-56 0z"></path></svg>`,
+            customClass: {
+                icon: 'no-border'
+              }
         }).then((result) => {
 
             if (result.isConfirmed) {
@@ -252,6 +256,11 @@ export default function Sidebar() {
         auth.languageCode = "it";
 
         const provider = new GoogleAuthProvider();
+        provider.setCustomParameters({
+            prompt:"select_account"
+        })
+        provider.addScope('profile');
+        provider.addScope('email');
 
         signInWithPopup(auth, provider)
             .then((result) => {
@@ -263,11 +272,11 @@ export default function Sidebar() {
                 sessionStorage.setItem("provider", "google")
                 // The signed-in user info.
                 const user = result.user;
-                logEvent(analytics, 'login',{displayName:user.displayName});
+                logEvent(analytics, 'login', { displayName: user.displayName });
 
                 console.log(user);
                 setavatar(user.photoURL)
-                setemail(user.email)
+                setemail(user.providerData[0].email)
                 setfirstname("Hi, " + user.displayName.split(" ")[0] + " 👋")
                 setRead(0)
                 read_data()
@@ -303,6 +312,9 @@ export default function Sidebar() {
         auth.languageCode = "it";
 
         const provider = new FacebookAuthProvider();
+        
+        // provider.addScope('profile');
+        // provider.addScope('email');
 
         signInWithPopup(auth, provider)
             .then((result) => {
@@ -313,10 +325,10 @@ export default function Sidebar() {
                 sessionStorage.setItem("provider", "facebook")
                 // The signed-in user info.
                 const user = result.user;
-                logEvent(analytics, 'login',{displayName:user.displayName});
+                logEvent(analytics, 'login', { displayName: user.displayName });
                 console.log(user);
                 setavatar(user.photoURL)
-                setemail(user.email)
+                setemail(user.providerData[0].email)
                 setfirstname("Hi, " + user.displayName.split(" ")[0] + " 👋")
                 setRead(0)
                 read_data()
@@ -374,7 +386,7 @@ export default function Sidebar() {
 
                         <input type="color" className="form-control form-control-color rounded" onInput={changeColor} style={{ padding: "0px 0px", border: "transparent", width: "45px", height: 0 }} id="exampleColorInput" title="Choose your color" autocompleted="" />
                         <li className="nav-item dropdown" style={{ listStyle: "none", width: "auto" }}>
-                            <div className="nav-link dropdown-toggle d-flex align-items-center" data-mdb-toggle="dropdown" aria-expanded="true" style={{ width: "auto", paddingTop: "4px" }}>
+                            <div className="nav-link dropdown-toggle d-flex align-items-center" data-mdb-toggle="dropdown" aria-expanded="true" style={{ width: "auto", paddingTop: "4px",cursor:"pointer" }}>
                                 <img src={avatar} referrerPolicy="no-referrer" className="avatar avatar-24 photo rounded-circle" alt='' style={{ width: "24px" }} />
                             </div>
                             <div className="dropdown-menu dropdown-menu-end p-0" aria-labelledby="userDropdown" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" data-mdb-popper="none" style={{ width: "auto" }}>
@@ -438,6 +450,7 @@ export default function Sidebar() {
                         <About />
                         <Department />
                         <Team />
+                        <Footer/>
                     </Route>
                     <Route exact path="/dashboard">
                         <Dashboard />

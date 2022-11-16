@@ -29,13 +29,18 @@ export default function Medication() {
   const db = getFirestore(app);
   useEffect(() => {
     authenticate()
+    
   })
+
   let user
   const [auth, setauth] = useState(0)
   const [user_uid, setuser_uid] = useState(0)
   const [country, setcountry] = useState("")
   const [city, setcity] = useState("")
   const [region, setregion] = useState("")
+  const [lati, setlati] = useState("")
+  const [long, setlong] = useState("")
+  const [isloading, setisloading] = useState(0)
   const authenticate = () => {
     // Build Firebase credential with the Google ID token.
     if (auth === 0) {
@@ -61,6 +66,8 @@ export default function Medication() {
               // console.log(payload.location.country.name + ', ' + payload.location.city);
               setcountry(payload.location.country.name )
               setcity(payload.location.city)
+              setlati(payload.location.latitude)
+              setlong(payload.location.longitude)
               setregion(payload.location.region.name)
             });
         }).catch((error) => {
@@ -71,66 +78,13 @@ export default function Medication() {
       else {
         history.push('/')
       }
+      
     }
   }
-  const add_data = async () => {
-    try {
-
-      const docRef = await addDoc(collection(db, "users"), {
-        uid: user_uid,
-        name: sessionStorage.getItem("user_name"),
-        email: sessionStorage.getItem("user_email"),
-        dob: sessionStorage.getItem("user_age"),
-        gender: sessionStorage.getItem("user_gender"),
-        symptoms: (sessionStorage.getItem("Selected")).split(","),
-        disease: encoded[parseInt(sessionStorage.getItem("Disease"))].Disease,
-        medicine: medicine[parseInt(sessionStorage.getItem("Disease"))].Medicine,
-        country:country,
-        city:city,
-        region:region,
-        createdAt: Timestamp.now()
-      });
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
-  }
-  const history = useHistory()
-  const HandleFinish = () => {
-    add_data()
-    Swal.fire({
-      text: 'Do you want to Download the Prescription?',
-      showCancelButton: true,
-      confirmButtonText: 'Download',
-      icon: "question",
-    }).then((result) => {
-
-      if (result.isConfirmed) {
-        // let timerInterval
-        Swal.fire({
-          title: 'Downloading....',
-          html: 'Please Wait For few seconds',
-          timer: 2000,
-          timerProgressBar: true,
-          didOpen: () => {
-            Swal.showLoading()
-            // const b = Swal.getHtmlContainer().querySelector('b')
-            // timerInterval = setInterval(() => {
-            //   b.textContent = Swal.getTimerLeft()
-            // }, 100)
-          },
-          willClose: () => {
-            // clearInterval(timerInterval)
-            Swal.fire("Downloaded Successfully", "Thank You for using our Service", "success")
-          }
-        }).then((result) => {
-          /* Read more about handling dismissals below */
-          if (result.dismiss === Swal.DismissReason.timer) {
-            // console.log('I was closed by the timer')
-          }
-        })
-        const doc = new jsPDF();
-        const selected = (sessionStorage.getItem("Selected")).split(",")
+  const doc = new jsPDF();
+  const make_pdf=()=>{
+    setisloading(1)
+    const selected = (sessionStorage.getItem("Selected")).split(",")
         var width = doc.internal.pageSize.getWidth();
         var height = doc.internal.pageSize.getHeight();
         doc.addImage(img, 'png', 0, 0, width, height)
@@ -244,12 +198,94 @@ export default function Medication() {
         doc.setFont('times', 'italic')
         doc.setTextColor(250, 250, 250)
         doc.text(`${date}`, 60, 294)
+
+  }
+  const add_data = async () => {
+    try {
+      setisloading(1)
+      const docRef = await addDoc(collection(db, "users"), {
+        uid: user_uid,
+        name: sessionStorage.getItem("user_name"),
+        email: sessionStorage.getItem("user_email"),
+        dob: sessionStorage.getItem("user_age"),
+        gender: sessionStorage.getItem("user_gender"),
+        symptoms: (sessionStorage.getItem("Selected")).split(","),
+        disease: encoded[parseInt(sessionStorage.getItem("Disease"))].Disease,
+        medicine: medicine[parseInt(sessionStorage.getItem("Disease"))].Medicine,
+        country:country,
+        city:city,
+        latitude:lati,
+        longitude:long,
+        region:region,
+        createdAt: Timestamp.now()
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
+  const history = useHistory()
+  const HandleFinish = () => {
+    setisloading(1)
+    add_data()
+    Swal.fire({
+      text: 'Do you want to Download the Prescription?',
+      showCancelButton: true,
+      confirmButtonText: '<svg style="margin-bottom:4px;margin-right:2px;" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>Download',
+      icon: "question",
+    }).then((result) => {
+      make_pdf()
+      setisloading(0)
+      if (result.isConfirmed) {
+        // let timerInterval
+        // Swal.fire("Downloaded Successfully", "Thank You for using our Service", "success")
+        Swal.fire({
+          title:"Downloaded Successfully",
+          text: 'Thank You for using our Service',
+          showCancelButton: true,
+          cancelButtonText:'<svg style="margin-bottom:4px;margin-right:2px;" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M685.4 354.8c0-4.4-3.6-8-8-8l-66 .3L512 465.6l-99.3-118.4-66.1-.3c-4.4 0-8 3.5-8 8 0 1.9.7 3.7 1.9 5.2l130.1 155L340.5 670a8.32 8.32 0 0 0-1.9 5.2c0 4.4 3.6 8 8 8l66.1-.3L512 564.4l99.3 118.4 66 .3c4.4 0 8-3.5 8-8 0-1.9-.7-3.7-1.9-5.2L553.5 515l130.1-155c1.2-1.4 1.8-3.3 1.8-5.2z"></path><path d="M512 65C264.6 65 64 265.6 64 513s200.6 448 448 448 448-200.6 448-448S759.4 65 512 65zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg>Close',
+          confirmButtonText: '<a href="https://docs.google.com/forms/d/e/1FAIpQLSdqZpTmO4AV9LjyzVWImxIca0uckuR1f7bAJQWErWureyrH0Q/viewform?usp=sf_link" target="_blank" style="color:#fff"><svg style="margin-bottom:2px;margin-right:2px;" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17l-.59.59-.58.58V4h16v12zm-9-4h2v2h-2zm0-6h2v4h-2z"></path></svg>Feedback</a>',
+          icon: "success",
+        })
+        // Swal.fire({
+        //   title: 'Downloading....',
+        //   html: 'Please Wait For few seconds',
+        //   timer: 2000,
+        //   timerProgressBar: true,
+        //   // didOpen: () => {
+        //   //   Swal.showLoading()
+        //   //   // const b = Swal.getHtmlContainer().querySelector('b')
+        //   //   // timerInterval = setInterval(() => {
+        //   //   //   b.textContent = Swal.getTimerLeft()
+        //   //   // }, 100)
+        //   // },
+        //   willOpen:()=>{
+        //     Swal.showLoading(Swal.getConfirmButton())
+        //   },
+        //   willClose: () => {
+        //     // clearInterval(timerInterval)
+        //     Swal.fire("Downloaded Successfully", "Thank You for using our Service", "success")
+        //   }
+        // }).then((result) => {
+        //   /* Read more about handling dismissals below */
+        //   if (result.dismiss === Swal.DismissReason.timer) {
+        //     // console.log('I was closed by the timer')
+        //   }
+        // })
+        
         doc.save(`${sessionStorage.getItem("user_name")}_Prescription.pdf`);
 
         // Swal.fire("Downloaded Successfully", "Thank You for using our Service", "success")
         history.push("/")
       } else {
-        Swal.fire('Thank You', '', 'success')
+        // Swal.fire('Thank You', '', 'success')
+        Swal.fire({
+          title: 'Thank You',
+          showCancelButton: true,
+          cancelButtonText:'<svg style="margin-bottom:4px;margin-right:2px;" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M685.4 354.8c0-4.4-3.6-8-8-8l-66 .3L512 465.6l-99.3-118.4-66.1-.3c-4.4 0-8 3.5-8 8 0 1.9.7 3.7 1.9 5.2l130.1 155L340.5 670a8.32 8.32 0 0 0-1.9 5.2c0 4.4 3.6 8 8 8l66.1-.3L512 564.4l99.3 118.4 66 .3c4.4 0 8-3.5 8-8 0-1.9-.7-3.7-1.9-5.2L553.5 515l130.1-155c1.2-1.4 1.8-3.3 1.8-5.2z"></path><path d="M512 65C264.6 65 64 265.6 64 513s200.6 448 448 448 448-200.6 448-448S759.4 65 512 65zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg>Close',
+          confirmButtonText: '<a href="https://docs.google.com/forms/d/e/1FAIpQLSdqZpTmO4AV9LjyzVWImxIca0uckuR1f7bAJQWErWureyrH0Q/viewform?usp=sf_link" target="_blank" style="color:#fff"><svg style="margin-bottom:2px;margin-right:2px;" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17l-.59.59-.58.58V4h16v12zm-9-4h2v2h-2zm0-6h2v4h-2z"></path></svg>Feedback</a>',
+          icon: "success",
+        })
         history.push("/")
       }
     })
@@ -295,7 +331,8 @@ export default function Medication() {
           <Link to="/form/disease"><button type="button" className="btn btn-primary rounded-2 ms-auto me-auto me-4 my-4 btn_hover gray-bg" data-mdb-ripple-color="var(--first-color)" style={{ borderColor: "var(--first-color)", padding: "9px 20px", fontSize: "14px", marginTop: "20px", color: 'var(--first-color)', fontFamily: 'SF Mono' }}><BiChevronLeft size={24} style={{ verticalAlign: "-7.5px" }} />  Back</button></Link>
         </div>
         <div className='' style={{ paddingRight: "3rem", position: "absolute", bottom: 0, right: 0, paddingBottom: "0.5rem" }}>
-          <button onClick={HandleFinish} type="button" className="btn btn-primary rounded-2 ms-auto me-auto me-4 my-4 btn_hover" data-mdb-ripple-color="var(--first-color)" style={{ background: "var(--first-color) var(--mdb-gradient)", borderColor: "var(--first-color)", padding: "9px 20px", fontSize: "14px", marginTop: "20px", color: '#FFF', fontFamily: 'SF Mono' }}>Finish <BiChevronRight size={24} style={{ verticalAlign: "-7.5px" }} /> </button>
+          <button onClick={HandleFinish} type="button" className="btn btn-primary rounded-2 ms-auto me-auto me-4 my-4 btn_hover" data-mdb-ripple-color="var(--first-color)" style={{ background: "var(--first-color) var(--mdb-gradient)", borderColor: "var(--first-color)", padding: "9px 20px", fontSize: "14px", marginTop: "20px", color: '#FFF', fontFamily: 'SF Mono' }}>{isloading===1?<span className="spinner-border  spinner-border-sm me-2" role="status" aria-hidden="true" ></span>:''}
+          Finish <BiChevronRight size={24} style={{ verticalAlign: "-7.5px" }} /> </button>
         </div>
 
       </div>

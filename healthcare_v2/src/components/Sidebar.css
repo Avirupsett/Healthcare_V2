@@ -225,3 +225,6 @@
   .swal2-popup .swal2-styled:focus {
     box-shadow: none !important;
 }
+.no-border {
+  border: 1px solid var(--text-color) !important;
+}

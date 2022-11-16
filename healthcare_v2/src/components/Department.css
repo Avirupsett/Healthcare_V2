@@ -17,6 +17,7 @@
     transition: .4s;
     border-radius: 5px;
     margin-bottom: 30px;
+    box-shadow:  0 .5rem 1rem #64758930;
 }
 .thumb{
     margin-bottom: 45px;
