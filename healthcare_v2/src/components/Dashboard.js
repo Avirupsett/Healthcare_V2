@@ -88,10 +88,11 @@ export default function Dashboard() {
                 const querySnapshot = await getDocs(q);
                 querySnapshot.forEach((doc) => {
                     let d = new Date(doc.data().createdAt.toDate())
-                    let fulldate = String(d.getDate() + " " + month_names[d.getMonth()] + ", " + d.getFullYear())
-                    valuecount_date.push(new Date(fulldate).getTime())
+                    let new_date=new Date()
+                    let fulldate = String((d.getDate()+1) + " " + month_names[d.getMonth()] + ", " + d.getFullYear())
+                    valuecount_date.push(new Date(fulldate).getTime()+ 86400000)
                     if (d.getMonth() === new Date().getMonth() && d.getFullYear() === new Date().getFullYear()) {
-                        valuecount_monthly.push(new Date(fulldate).getTime())
+                        valuecount_monthly.push(new Date(fulldate).getTime()+ 86400000)
                     }
                     value.push([n, doc.data().name, doc.data().dob, doc.data().gender, doc.data().symptoms, doc.data().disease, doc.data().medicine, fulldate])
                     // console.log(`${doc.id} => ${doc.data().createdAt.toDate()}`);
@@ -110,6 +111,7 @@ export default function Dashboard() {
                 })
                 setValues(value)
                 setdatevalues(countFreq(valuecount_date, valuecount_date.length))
+                console.log()
                 setmonthlyvalues(countFreq(valuecount_monthly, valuecount_monthly.length))
 
             }
@@ -265,9 +267,24 @@ export default function Dashboard() {
                     fontSize: '12px',
                     fontFamily: 'Calibre R',
                 }
+            },
+            axisBorder:{
+                show:false
             }
         },
-
+        yaxis:{
+            floating: false,
+            labels: {
+                style: {
+                    colors: 'var(--text-color)',
+                    fontSize: '14px',
+                    fontFamily: 'Calibre R',
+                }
+            }
+        },
+        grid:{
+            strokeDashArray:4
+        },
         stroke: {
             curve: 'smooth',
             colors: ["var(--first-color)"],
@@ -330,7 +347,23 @@ export default function Dashboard() {
                     fontSize: '12px',
                     fontFamily: 'Calibre R',
                 }
+            },
+            axisBorder:{
+                show:false
+            },
+        },
+        yaxis:{
+            floating: false,
+            labels: {
+                style: {
+                    colors: 'var(--text-color)',
+                    fontSize: '14px',
+                    fontFamily: 'Calibre R',
+                }
             }
+        },
+        grid:{
+            strokeDashArray:4
         },
         stroke: {
             curve: 'smooth',
@@ -390,7 +423,7 @@ export default function Dashboard() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: .5 }}
             >
-                <h1 className='display-5' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-4px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "-10px" : "10px" }}>Dashboard</h1>
+                <h1 className='display-5' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-4px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "-15px" : "10px" }}>Dashboard</h1>
                 <div className='pos-rel' style={{ paddingBottom: "24px" }}>
                     <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
                 </div>

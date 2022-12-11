@@ -225,6 +225,12 @@
   .swal2-popup .swal2-styled:focus {
     box-shadow: none !important;
 }
+.swal2-close:focus {
+  box-shadow: none !important;
+}
 .no-border {
-  border: 1px solid var(--text-color) !important;
+  border: none !important;
+  width: 100% !important;
+  height: 85px !important;
+  margin-bottom: 0px !important;
 }

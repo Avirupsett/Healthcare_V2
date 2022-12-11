@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import aritra from "../assets/Aritra.jpeg"
 import priyanka from "../assets/Priyanka.jpeg"
 import debojyoti from "../assets/Debojyoti.jpeg"
-import avirup from "../assets/Avirup.png"
+import avirup from "../assets/Avirup.jpeg"
 
 export default function Team() {
     return (
