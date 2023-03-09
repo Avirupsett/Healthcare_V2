@@ -109,4 +109,4 @@ def predict_heart():
     # return data
     return jsonify(results=output)
 
-app.run(host="0.0.0.0",debug=True)
+# app.run(host="0.0.0.0",debug=True)
