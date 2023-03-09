@@ -1,0 +1,19 @@
+.css-187mznn-MuiSlider-root {
+    color:var(--first-color);
+}
+@media screen and (max-width: 999px) {
+    .steppers{
+        padding-top: 35px;
+    }
+}
+.form-outline .form-control.active~.form-label, .form-outline .form-control:focus~.form-label {
+    transform: translateY(-1.6rem) translateY(0.4rem) scale(0.7);
+}
+
+.css-1x51dt5-MuiInputBase-input-MuiInput-input {
+    min-width: fit-content !important;
+    width: max-content !important;
+}
+.css-gqsga1-MuiInputBase-root-MuiInput-root:before {
+    border-bottom: transparent !important;
+}

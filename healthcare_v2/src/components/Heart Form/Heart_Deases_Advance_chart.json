@@ -1,0 +1,22 @@
+[
+  {
+    "Heart Disease": "Positive",
+    "Carbohydrate": 400,
+    "Protein": 65,
+    "Iron": 0.017,
+    "Fat": 25,
+    "Calcium": 0.6,
+    "Sodium": 1.2,
+    "Total Kcals per day": 2200
+  },
+  {
+    "Heart Disease": "Negative",
+    "Carbohydrate": 555,
+    "Protein": 60,
+    "Iron": 0.017,
+    "Fat": 30,
+    "Calcium": 0.6,
+    "Sodium": 1.2,
+    "Total Kcals per day": 2730
+  }
+ ]

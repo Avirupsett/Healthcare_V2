@@ -1,0 +1,20 @@
+[
+ {
+   "Food to Avoid": "Positive",
+   "food1": "Snack & Fried food",
+   "food2": "Soda",
+   "food3": "Sweets & Cakes",
+   "food4": "Icecream",
+   "food5": "Processed meat",
+   "food6": "Flavored coffee drinks"
+ },
+ {
+   "Food to Avoid": "Negative",
+   "food1": "Processed pastries",
+   "food2": "Fried food & junk food",
+   "food3": "Flavored drinks",
+   "food4": "Soda",
+   "food5": "Saturated fats",
+   "food6": "Refined foods"
+ }
+]

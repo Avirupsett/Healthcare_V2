@@ -1,0 +1,32 @@
+[
+ {
+   "Heart Disease": "50% to 60%",
+   "Medicine1": "Azilsartan (Edarbi)",
+   "Medicine2": "Sorbitrate",
+   "Medicine3": "Olmesartan (Benicar)"
+ },
+ {
+   "Heart Disease": "61% to 70 %",
+   "Medicine1": "Candesartan (Atacand)",
+   "Medicine2": "Sorbitrate",
+   "Medicine3": "Telmisartan (Micardis)"
+ },
+ {
+   "Heart Disease": "71% to 80%",
+   "Medicine1": "Eprosartan (Teveten)",
+   "Medicine2": "Sorbitrate",
+   "Medicine3": "Pravastatin (Pravachol)"
+ },
+ {
+   "Heart Disease": "81% to 90%",
+   "Medicine1": "Irbesartan (Avapro)",
+   "Medicine2": "Sorbitrate",
+   "Medicine3": "Rosuvastatin(Crestor) "
+ },
+ {
+   "Heart Disease": "91% to 100%",
+   "Medicine1": "Losartan (Cozaar)",
+   "Medicine2": "Sorbitrate",
+   "Medicine3": "Pitavastatin (Livalo)"
+ }
+]

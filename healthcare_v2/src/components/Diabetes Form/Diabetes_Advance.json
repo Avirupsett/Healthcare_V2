@@ -1,0 +1,37 @@
+[
+ {
+   "DiabetesMin": 50,
+   "DiabetesMax": 60,
+   "Medicine1": "Metformin",
+   "Medicine2": "Glimepiride (Amaryl)",
+   "Medicine3": "Glucotrol XL"
+ },
+ {
+  "DiabetesMin": 60,
+  "DiabetesMax": 70,
+   "Medicine1": "Glimepiride-pioglitazone (Duetact)",
+   "Medicine2": "Gliclazide",
+   "Medicine3": "Novolin R FlexPen (Insulin)"
+ },
+ {
+  "DiabetesMin": 70,
+  "DiabetesMax": 80,
+   "Medicine1": "Glipizide",
+   "Medicine2": "Glyburide (Glynase)",
+   "Medicine3": "Novolin R ReliOn (Insulin)"
+ },
+ {
+  "DiabetesMin": 80,
+  "DiabetesMax": 90,
+   "Medicine1": "Glipizide ER (Glipizide XL)",
+   "Medicine2": "Glipizide-metformin",
+   "Medicine3": "Humulin R U (Insulin)"
+ },
+ {
+  "DiabetesMin": 90,
+  "DiabetesMax": 100,
+   "Medicine1": "Fortamet",
+   "Medicine2": "Glumetza",
+   "Medicine3": "Novolin R FlexPen ReliOn (Insulin)"
+ }
+]

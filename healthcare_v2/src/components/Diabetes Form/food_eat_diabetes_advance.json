@@ -1,0 +1,20 @@
+[
+ {
+   "Food to Eat": "Positive",
+   "food1": "Fish & Salad",
+   "food2": "Water & Green juice",
+   "food3": "Fresh fruits",
+   "food4": "Nuts",
+   "food5": "Whole grains",
+   "food6": "Cinnamon & Turmeric"
+ },
+ {
+   "Food to Eat": "Negative",
+   "food1": "Tea & Coffee",
+   "food2": "Fish & Meat",
+   "food3": "Water & Fruit Salad",
+   "food4": "Whole grains",
+   "food5": "Cinnamon & Turmeric",
+   "food6": "Nuts & Breads"
+ }
+]

@@ -24,6 +24,8 @@ import { collection, getDocs } from "firebase/firestore";
 import { getAnalytics, logEvent } from "firebase/analytics";
 import Adminboard from './Adminboard'
 import Footer from './Footer'
+import DiabetesForm from './Diabetes Form/DiabetesForm'
+import HeartForm from './Heart Form/HeartForm'
 
 export default function Sidebar() {
 
@@ -554,6 +556,16 @@ export default function Sidebar() {
                 <Switch>
                     <Route path="/form">
                         <Form />
+                    </Route>
+                </Switch>
+                <Switch>
+                    <Route path="/diabetesform">
+                        <DiabetesForm />
+                    </Route>
+                </Switch>
+                <Switch>
+                    <Route path="/heartform">
+                        <HeartForm />
                     </Route>
                 </Switch>
             </section>

@@ -1,0 +1,20 @@
+[
+ {
+   "Food to Avoid": "Positive",
+   "food1": "Fried food",
+   "food2": "Butter & Margarine",
+   "food3": "Sweets & Cakes",
+   "food4": "Red meat (Beef , Pork , Lamb etc.)",
+   "food5": "Mayonnaise & Cheese",
+   "food6": "Egg yolks"
+ },
+ {
+   "Food to Avoid": "Negative",
+   "food1": "Processed pastries",
+   "food2": "Fried food & junk food",
+   "food3": "Flavored drinks",
+   "food4": "Soda",
+   "food5": "Saturated fats",
+   "food6": "Refined foods"
+ }
+]

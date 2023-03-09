@@ -54,7 +54,7 @@ export default function Header() {
             // Sign in with credential from the Google user.
             const auth = getAuth(app);
             signInWithCredential(auth, credential).then((result) => {
-                history.push("/form/details")
+                history.push("/heartform/details")
                 setisloading(0)
             }).catch((error) => {
                 history.push('/')
