@@ -4,3 +4,4 @@ scikit-learn==1.1.1
 joblib
 pandas
 flask-cors
+gunicorn
