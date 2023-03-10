@@ -1,6 +1,6 @@
 requests
 flask
-scikit-learn==1.0.2
+scikit-learn==1.1.1
 joblib
 pandas
 flask-cors
