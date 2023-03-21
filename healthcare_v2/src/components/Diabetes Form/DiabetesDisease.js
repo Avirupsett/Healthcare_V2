@@ -123,12 +123,12 @@ export default function DiabetesDisease() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: .5 }}
                 >
-                    <h1 className='display-5' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Report Result</h1>
+                    <h1 className='display-5' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Diabetes Result</h1>
                     <div className='pos-rel' style={{ paddingBottom: "20px" }}>
                         <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
                     </div>
                     <div className="row  justify-content-between mb-8 flex-wrap-reverse">
-                        <div className="col-xl-6 col-lg-5 mb-md-0  pe-0 " style={{ width: `${window.innerWidth>1000?'60%':'auto'}`, borderRadius: "10px", marginBottom: "80px" }}>
+                        <div className="col-xxl-7 col-xl-7 col-lg-7 col-md-7 col-sm-6 pe-0 " style={{ borderRadius: "10px", marginBottom: "80px" }}>
                             <div className='fs-4 selected2 d-flex' style={{ fontFamily: "Calibre R" }}>
                                 <div className='' style={{ fontFamily: "Calibre R", color: "var(--first-color)", letterSpacing: '1.2px', minWidth: "max-content", fontWeight: 600, paddingRight: "15px", paddingLeft: "5px" }}>Diabetes : </div>
                                 <div style={{ paddingBottom: "20px" }}>
@@ -157,7 +157,7 @@ export default function DiabetesDisease() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-xl-6 col-lg-5 mb-4 mb-md-0  pe-0 me-5 pb-3" style={{ width: "fit-content", borderRadius: "10px" }}>
+                        <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 mb-4 pe-0 me-5 pb-3" style={{  borderRadius: "10px" }}>
                             {/* <ReactApexChart options={chartData3_2} series={chartData3_2.series} type="donut" height={`280px`} /> */}
                             <CircularProgressbar value={disease === -1 ? 0.0 : parseFloat(disease) * 100} text={`${disease === -1 ? 0.0 : parseInt(disease * 100)}%`}
                                 styles={buildStyles({

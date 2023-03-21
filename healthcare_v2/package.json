@@ -1,6 +1,6 @@
 {
   "name": "healthcare_v2",
-  "proxy": "http://charlesdey007.pythonanywhere.com",
+  "proxy": "https://disease-diagnosis.onrender.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

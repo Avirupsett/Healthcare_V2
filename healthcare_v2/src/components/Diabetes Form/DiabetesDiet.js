@@ -11,6 +11,10 @@ import foodToEat from './food_eat_diabetes_advance.json'
 import foodToAvoid from './food_avoid_diabetes_advance.json'
 import diet from './Diabetes_Advance_chart.json'
 import ReactApexChart from 'react-apexcharts';
+import { getFirestore } from "firebase/firestore";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
+import medicine from '../Form Components/disease_medicine.json'
+import Swal from 'sweetalert2';
 
 export default function DiabetesDiet() {
   const firebaseConfig = {
@@ -23,12 +27,43 @@ export default function DiabetesDiet() {
     measurementId: "G-1M9JQ4VDP7"
   };
   const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
   // const analytics = getAnalytics(app);
   useEffect(() => {
     authenticate()
 
   })
   const [auth, setauth] = useState(0)
+  const [user_uid, setuser_uid] = useState(0)
+  const [country, setcountry] = useState("")
+  const [city, setcity] = useState("")
+  const [region, setregion] = useState("")
+  const [lati, setlati] = useState("")
+  const [long, setlong] = useState("")
+
+  const add_data = async () => {
+    try {
+      const docRef = await addDoc(collection(db, "users"), {
+        uid: user_uid,
+        name: sessionStorage.getItem("user_name"),
+        email: sessionStorage.getItem("user_email"),
+        dob: sessionStorage.getItem("user_age"),
+        gender: sessionStorage.getItem("user_gender"),
+        symptoms: (sessionStorage.getItem("Selected")).split(","),
+        disease: "Diabetes",
+        medicine: disease>0.5?medicine[parseInt(sessionStorage.getItem("Disease"))].Medicine:"No Medication",
+        country:country,
+        city:city,
+        latitude:lati,
+        longitude:long,
+        region:region,
+        createdAt: Timestamp.now()
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
 
   const authenticate = () => {
     // Build Firebase credential with the Google ID token.
@@ -45,7 +80,20 @@ export default function DiabetesDiet() {
         // Sign in with credential from the Google user.
         const auth = getAuth(app);
         signInWithCredential(auth, credential).then((result) => {
-          // const user = result.user;
+          const user = result.user;
+          setuser_uid(user.uid)
+          fetch('https://api.ipregistry.co/?key=tryout')
+            .then(function (response) {
+              return response.json();
+            })
+            .then(function (payload) {
+              // console.log(payload.location.country.name + ', ' + payload.location.city);
+              setcountry(payload.location.country.name )
+              setcity(payload.location.city)
+              setlati(payload.location.latitude)
+              setlong(payload.location.longitude)
+              setregion(payload.location.region.name)
+            });
 
 
         }).catch((error) => {
@@ -119,7 +167,29 @@ export default function DiabetesDiet() {
 };
 
   const handleSubmit = () => {
-
+    Swal.fire({
+      text: 'Do you want to continue Rechecking of other Disease(s)?',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
+      icon: "question",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        add_data()
+        history.push("/form/disease")
+      }
+      else{
+        add_data()
+        Swal.fire({
+          title: 'Thank You',
+          showCancelButton: true,
+          cancelButtonText:'<svg style="margin-bottom:4px;margin-right:2px;" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M685.4 354.8c0-4.4-3.6-8-8-8l-66 .3L512 465.6l-99.3-118.4-66.1-.3c-4.4 0-8 3.5-8 8 0 1.9.7 3.7 1.9 5.2l130.1 155L340.5 670a8.32 8.32 0 0 0-1.9 5.2c0 4.4 3.6 8 8 8l66.1-.3L512 564.4l99.3 118.4 66 .3c4.4 0 8-3.5 8-8 0-1.9-.7-3.7-1.9-5.2L553.5 515l130.1-155c1.2-1.4 1.8-3.3 1.8-5.2z"></path><path d="M512 65C264.6 65 64 265.6 64 513s200.6 448 448 448 448-200.6 448-448S759.4 65 512 65zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg>Close',
+          confirmButtonText: '<a href="https://docs.google.com/forms/d/e/1FAIpQLSdqZpTmO4AV9LjyzVWImxIca0uckuR1f7bAJQWErWureyrH0Q/viewform?usp=sf_link" target="_blank" style="color:#fff"><svg style="margin-bottom:2px;margin-right:2px;" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17l-.59.59-.58.58V4h16v12zm-9-4h2v2h-2zm0-6h2v4h-2z"></path></svg>Feedback</a>',
+          icon: "success",
+        })
+        history.push("/")
+      }
+    })
   }
   const handleBack = () => {
     history.push({ pathname: "/diabetesform/disease", state: { selected: location.state.selected } })
@@ -138,8 +208,8 @@ export default function DiabetesDiet() {
           <div className='pos-rel' style={{ paddingBottom: "20px" }}>
             <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
           </div>
-          <div className="row  mb-5  align-items-start ">
-            <div className="col-xl-6 col-lg-7 mb-4 mb-md-0" style={{ paddingBottom: "20px" }}>
+          <div className="row  mb-5  align-items-center ">
+            <div className="col-xl-6 col-lg-6 mb-4 mb-md-0" style={{ paddingBottom: "20px" }}>
              <div className='table-responsive-sm'>
               <table className="table table-sm ">
                 <thead>
@@ -189,13 +259,13 @@ export default function DiabetesDiet() {
               </table>
               </div>
             </div>
-            <div className="col-xl-6 col-lg-7 mb-4 mb-md-0" style={{ paddingBottom: "20px" }}>
+            <div className="col-xl-6 col-lg-6 mb-4 mb-md-0" style={{ paddingBottom: "20px" }}>
              
             <ReactApexChart options={chartData3_2} series={chartData3_2.series} type="donut"  />
             </div>
           </div>
           <div className="row  mb-9  align-items-start ">
-            <div className="col-xl-6 col-lg-7 mb-4 mb-md-0" style={{ paddingBottom: "20px" }}>
+            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-4 mb-md-0" style={{ paddingBottom: "20px" }}>
               <h1 className='display-6' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Food To Eat</h1>
               <div className='pos-rel' style={{ paddingBottom: "15px" }}>
                 <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
@@ -210,7 +280,7 @@ export default function DiabetesDiet() {
               </div>
 
             </div>
-            <div className="col-xl-6 col-lg-7 mb-4 mb-md-0">
+            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-4 mb-md-0">
               <h1 className='display-6' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Food To Avoid</h1>
               <div className='pos-rel' style={{ paddingBottom: "15px" }}>
                 <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />

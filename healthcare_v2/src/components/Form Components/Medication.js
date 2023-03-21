@@ -294,36 +294,46 @@ export default function Medication() {
 
   return (
     <section id="medication" className='d-flex align-items-start form gray-bg' style={{ minHeight: window.innerWidth > 800 ? "78vh" : "77vh", paddingTop: "30px", flexDirection: 'column' }}>
-      <div className="container" >
+      <div className="container-fluid" >
         <motion.div
           initial={{ opacity: 0, x: -25 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0 }}
           transition={{ duration: .5 }}
         >
-          <div className="row  mb-5  align-items-start ">
-            <div className="col-xl-6 col-lg-7 mb-4 mb-md-0" style={{ paddingBottom: "20px" }}>
-              <h1 className='display-5' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Precautions</h1>
+          <div className="row  mb-5 me-lg-5">
+            <div className="col-xl-6 col-lg-6 col-md-6 " >
+              <div className='box' style={{padding:"25px !important" }}>
+                 
+              <h1 className='display-5' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px"}}>Precautions</h1>
               <div className='pos-rel' style={{ paddingBottom: "24px" }}>
                 <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
               </div>
-              <div className='fs-4 selected2' style={{ fontFamily: "Calibre R", paddingLeft: "10px", paddingRight: "25px" }}>
+              <div className='fs-4 selected2' style={{ fontFamily: "Calibre R", paddingLeft: "15px", paddingRight: "0px" }}>
+               <ul>
                 <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{precautions[parseInt(sessionStorage.getItem("Disease"))].Symptom_Precaution_0}</li>
                 <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{precautions[parseInt(sessionStorage.getItem("Disease"))].Symptom_Precaution_1}</li>
                 <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{precautions[parseInt(sessionStorage.getItem("Disease"))].Symptom_Precaution_2}</li>
                 <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{precautions[parseInt(sessionStorage.getItem("Disease"))].Symptom_Precaution_3}</li>
+                </ul>
+              </div>
               </div>
 
             </div>
-            <div className="col-xl-6 col-lg-7 mb-4 mb-md-0">
-              <h1 className='display-5' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Medication</h1>
+            <div className="col-xl-6 col-lg-6 col-md-6 mb-4" >
+            <div className='box' style={{padding:"25px !important" }}>
+            
+              <h1 className='display-5' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px",marginLeft:"10px"}}>Medication</h1>
+       
               <div className='pos-rel' style={{ paddingBottom: "24px" }}>
                 <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
               </div>
-              <div className='fs-4 selected2' style={{ fontFamily: "Calibre R", paddingLeft: "10px", paddingRight: "25px" }}>
+              <div className='fs-4 selected2' style={{ fontFamily: "Calibre R", paddingLeft: "15px", paddingRight: "0px" }}>
+                <ul>
                 <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{medicine[parseInt(sessionStorage.getItem("Disease"))].Medicine}</li>
-
+                </ul>
               </div>
+            </div>
             </div>
           </div>
         </motion.div>

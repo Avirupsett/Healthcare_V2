@@ -3,6 +3,9 @@ import img from '../assets/section-back-icon.png'
 import img2 from '../assets/section-title-line.png'
 import './Department.css'
 import { motion } from "framer-motion"
+import {BsDiagram2} from 'react-icons/bs'
+import {FaUserNurse} from 'react-icons/fa'
+import { CiMedicalCross } from 'react-icons/ci'
 
 export default function Department() {
   return (
@@ -36,8 +39,9 @@ export default function Department() {
         <div className='row'>
             <div className='col-xl-4 col-lg-6 col-md-6'>
                 <div className='box text-center'>
-                    <div className="thumb">
-                        <img style={{filter:"grayScale(1) opacity(0.8) drop-shadow(0 0 0 var(--first-color))"}} src="	https://themepure.net/template/medidove-prv/medidove/img/services/service1.png" alt="" />
+                    <div className="thumb" >
+                    <BsDiagram2 size={40} color={'var(--first-color)'} style={{border:'1px solid var(--first-color)',borderRadius:"50%",padding:'5px',width:'75px',height:'70px'}}/>
+                        {/* <img style={{filter:"grayScale(1) opacity(0.8) drop-shadow(0 0 0 var(--first-color))"}} src="	https://themepure.net/template/medidove-prv/medidove/img/services/service1.png" alt="" /> */}
                     </div>
                     <div className="content">
                         <h3 className='fs-1' style={{color:"var(--heading-color)"}}>Symptoms</h3>
@@ -50,7 +54,8 @@ export default function Department() {
             <div className='col-xl-4 col-lg-6 col-md-6'>
                 <div className='box text-center'>
                     <div className="thumb">
-                        <img style={{filter:"grayScale(1) opacity(0.8) drop-shadow(0 0 0 var(--first-color))"}} src="	https://themepure.net/template/medidove-prv/medidove/img/services/service4.png" alt="" />
+                    <FaUserNurse size={40} color={'var(--first-color)'} style={{border:'1px solid var(--first-color)',borderRadius:"50%",padding:'5px',width:'75px',height:'70px'}}/>
+                        {/* <img style={{filter:"grayScale(1) opacity(0.8) drop-shadow(0 0 0 var(--first-color))"}} src="	https://themepure.net/template/medidove-prv/medidove/img/services/service4.png" alt="" /> */}
                     </div>
                     <div className="content">
                         <h3 className='fs-1' style={{color:"var(--heading-color)"}}>Prediction</h3>
@@ -63,7 +68,8 @@ export default function Department() {
             <div className='col-xl-4 col-lg-6 col-md-6'>
                 <div className='box text-center'>
                     <div className="thumb">
-                        <img style={{filter:"grayScale(1) opacity(0.8) drop-shadow(0 0 0 var(--first-color))"}} src="	https://themepure.net/template/medidove-prv/medidove/img/services/service6.png" alt="" />
+                    <CiMedicalCross size={40} color={'var(--first-color)'} style={{border:'1px solid var(--first-color)',borderRadius:"50%",padding:'5px',width:'75px',height:'70px'}}/>
+                        {/* <img style={{filter:"grayScale(1) opacity(0.8) drop-shadow(0 0 0 var(--first-color))"}} src="	https://themepure.net/template/medidove-prv/medidove/img/services/service6.png" alt="" /> */}
                     </div>
                     <div className="content">
                         <h3 className='fs-1' style={{color:"var(--heading-color)"}}>Medication</h3>

@@ -234,3 +234,8 @@
   height: 85px !important;
   margin-bottom: 0px !important;
 }
+
+ul{
+  all:unset;
+  list-style-position: outside;
+}

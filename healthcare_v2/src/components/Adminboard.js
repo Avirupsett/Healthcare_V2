@@ -1077,16 +1077,16 @@ export default function Adminboard() {
                                 <div className='d-flex flex-align-center justify-content-center mb-3'>
                                     <span >
                                         <select name="month" defaultValue={new Date().getMonth()} onChange={() => handle_symptoms()} className="form-control" id="msymptoms" style={{ color: "var(--text-color)", backgroundColor: "var(--gray-bg)", fontFamily: "'Calibre R','Inter','San Francisco','SF Pro Text',-apple-system,system-ui,sans-serif", padding: "6px 12px", fontSize: "22px", borderColor: "transparent", borderBottom: "1px solid var(--text-color)", cursor: "pointer" }}>
-                                            <option value="00">January</option>
-                                            <option value="01">February</option>
-                                            <option value="02">March</option>
-                                            <option value="03">April</option>
-                                            <option value="04">May</option>
-                                            <option value="05">June</option>
-                                            <option value="06">July</option>
-                                            <option value="07">August</option>
-                                            <option value="08">September</option>
-                                            <option value="09">October</option>
+                                            <option value="0">January</option>
+                                            <option value="1">February</option>
+                                            <option value="2">March</option>
+                                            <option value="3">April</option>
+                                            <option value="4">May</option>
+                                            <option value="5">June</option>
+                                            <option value="6">July</option>
+                                            <option value="7">August</option>
+                                            <option value="8">September</option>
+                                            <option value="9">October</option>
                                             <option value="10">November</option>
                                             <option value="11">December</option>
                                         </select>
@@ -1228,10 +1228,10 @@ export default function Adminboard() {
                                     </span>
                                 </div>
                                <div className="col-xl-6 col-lg-5 mb-4 mb-md-0  pe-0 " style={{ width: "48%", borderRadius: "10px" }}>
-                                    <ReactApexChart options={chartData3_1} series={chartData3_1.series} type="bar" height={symptomkeys_monthly.length > 10 ? `${20 * symptomkeys_monthly.length}px` : `200px`} />
+                                    <ReactApexChart options={chartData3_1} series={chartData3_1.series} type="bar" height={symptomkeys_monthly.length > 10 ? `${20 * symptomkeys_monthly.length}px` : `300px`} />
                                 </div>
                                     <div className="col-xl-6 col-lg-5 mb-4 mb-md-0  pe-0 " style={{ width: "49%", borderRadius: "10px" }}>
-                                        <ReactApexChart options={chartData3_2} series={chartData3_2.series} type="donut" height={symptomkeys_monthly.length > 10 ? `${20 * symptomkeys_monthly.length}px` : `200px`} />
+                                        <ReactApexChart options={chartData3_2} series={chartData3_2.series} type="donut" height={symptomkeys_monthly.length > 10 ? `${20 * symptomkeys_monthly.length}px` : `400px`} />
                                     </div>
                             </div>
                         </div>
@@ -1255,16 +1255,16 @@ export default function Adminboard() {
                                 <div className='d-flex flex-align-center justify-content-center mb-3'>
                                     <span >
                                         <select name="month" defaultValue={new Date().getMonth()} onChange={() => handle_disease()} className="form-control" id="mdisease" style={{ color: "var(--text-color)", backgroundColor: "var(--gray-bg)", fontFamily: "'Calibre R','Inter','San Francisco','SF Pro Text',-apple-system,system-ui,sans-serif", padding: "6px 12px", fontSize: "22px", borderColor: "transparent", borderBottom: "1px solid var(--text-color)", cursor: "pointer" }}>
-                                            <option value="00">January</option>
-                                            <option value="01">February</option>
-                                            <option value="02">March</option>
-                                            <option value="03">April</option>
-                                            <option value="04">May</option>
-                                            <option value="05">June</option>
-                                            <option value="06">July</option>
-                                            <option value="07">August</option>
-                                            <option value="08">September</option>
-                                            <option value="09">October</option>
+                                            <option value="0">January</option>
+                                            <option value="1">February</option>
+                                            <option value="2">March</option>
+                                            <option value="3">April</option>
+                                            <option value="4">May</option>
+                                            <option value="5">June</option>
+                                            <option value="6">July</option>
+                                            <option value="7">August</option>
+                                            <option value="8">September</option>
+                                            <option value="9">October</option>
                                             <option value="10">November</option>
                                             <option value="11">December</option>
                                         </select>

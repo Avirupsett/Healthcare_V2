@@ -100,34 +100,34 @@ export default function DiabetesDetails() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: .5 }}
                 >
-                    <h1 className='display-5' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Diabetes Report</h1>
+                    <h1 className='display-5' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Diabetes Test</h1>
                     <div className='pos-rel' style={{ paddingBottom: "15px" }}>
                         <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
                     </div>
                     <div className="row mb-8">
 
-                    <div className='col-xl-4 col-lg-5 pb-3'>
+                    <div className='col-xl-4 col-lg-6 col-md-6 pb-3'>
                    <InputSlider HandleStorage={HandleStorage} parameter={"Pregnancies"} min={0} max={17} default={0} details={"Number of times pregnant"}/>
     
                     </div>
-                    <div className='col-xl-4 col-lg-5 pb-3'>
+                    <div className='col-xl-4 col-lg-6 col-md-6 pb-3'>
 
                    <InputSlider HandleStorage={HandleStorage} parameter={"Glucose"} min={0} max={199} default={0} details={"Plasma glucose concentration a 2 hours in an oral glucose tolerance test"}/>
                     </div>
-                    <div className='col-xl-4 col-lg-5 pb-3'>
+                    <div className='col-xl-4 col-lg-6 col-md-6 pb-3'>
 
                    <InputSlider HandleStorage={HandleStorage} parameter={"Blood Pressure"} min={0} max={122} default={0} details={"Diastolic blood pressure (mm Hg)"}/>
                     </div>
                     
-                    <div className='col-xl-4 col-lg-5 pb-3'>
+                    <div className='col-xl-4 col-lg-6 col-md-6 pb-3'>
 
                    <InputSlider HandleStorage={HandleStorage} parameter={"Insulin"} min={0} max={846} default={0} details={"2-Hour serum insulin (mu U/ml)"}/>
                     </div>
-                    <div className='col-xl-4 col-lg-5 pb-3'>
+                    <div className='col-xl-4 col-lg-6 col-md-6 pb-3'>
 
                    <InputSlider HandleStorage={HandleStorage} parameter={"BMI"} min={0} max={68} default={0} details={"Body mass index (weight in kg/(height in m)^2)"}/>
                     </div>
-                    <div className='col-xl-4 col-lg-5 pb-3'>
+                    <div className='col-xl-4 col-lg-6 col-md-6 pb-3'>
 
                    <InputSlider HandleStorage={HandleStorage} parameter={"Age"} min={0} max={81} default={0} details={"Age (years)"}/>
                     </div>
@@ -136,7 +136,7 @@ export default function DiabetesDetails() {
 
                 </motion.div>
                 <div className='' style={{ position: "absolute", bottom: 0, paddingBottom: "0.5rem" }}>
-                    <Link to="/"><button type="button" className="btn btn-primary rounded-2 ms-auto me-auto me-4 my-4 btn_hover gray-bg" data-mdb-ripple-color="var(--first-color)" style={{ borderColor: "var(--first-color)", padding: "9px 20px", fontSize: "14px", marginTop: "20px", color: 'var(--first-color)', fontFamily: 'SF Mono' }}><BiChevronLeft size={24} style={{ verticalAlign: "-7.5px" }} />  Back</button></Link>
+                    <Link to="/form/disease"><button type="button" className="btn btn-primary rounded-2 ms-auto me-auto me-4 my-4 btn_hover gray-bg" data-mdb-ripple-color="var(--first-color)" style={{ borderColor: "var(--first-color)", padding: "9px 20px", fontSize: "14px", marginTop: "20px", color: 'var(--first-color)', fontFamily: 'SF Mono' }}><BiChevronLeft size={24} style={{ verticalAlign: "-7.5px" }} />  Back</button></Link>
                 </div>
                 <div className='' style={{ paddingRight: "3rem", position: "absolute", bottom: 0, right: 0, paddingBottom: "0.5rem" }}>
                     <button onClick={handleSubmit} type="button" className="btn btn-primary rounded-2 ms-auto me-auto me-4 my-4 btn_hover" data-mdb-ripple-color="var(--first-color)" style={{ background: "var(--first-color) var(--mdb-gradient)", borderColor: "var(--first-color)", padding: "9px 20px", fontSize: "14px", marginTop: "20px", color: '#FFF', fontFamily: 'SF Mono' }}>Next <BiChevronRight size={24} style={{ verticalAlign: "-7.5px" }} /> </button>

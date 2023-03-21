@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react'
 import About from './About'
 import Department from './Department'
 import Header from './Header'
@@ -26,8 +26,14 @@ import Adminboard from './Adminboard'
 import Footer from './Footer'
 import DiabetesForm from './Diabetes Form/DiabetesForm'
 import HeartForm from './Heart Form/HeartForm'
+import { useLocation } from 'react-router-dom';
 
 export default function Sidebar() {
+    const location = useLocation();
+
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0);
+      }, [location.pathname]);
 
     const match = useRouteMatch({
         path: "/",
@@ -56,30 +62,30 @@ export default function Sidebar() {
         }
     }
 
-    const [scroll, setScroll] = useState(window.scrollY)
+    // const [scroll, setScroll] = useState(window.scrollY)
     const handleActive = useCallback(
         () => {
             if (match.isExact) {
-            setScroll(window.scrollY)
-            if (scroll >= 0 && scroll <= window.innerHeight) {
+            // setScroll(window.scrollY)
+            if (window.scrollY >= 0 && window.scrollY <= window.innerHeight) {
                 document.getElementById("home").classList.add('active')
                 document.getElementById("about").classList.remove('active')
                 document.getElementById("department").classList.remove('active')
                 document.getElementById("team").classList.remove('active')
             }
-            else if (scroll > window.innerHeight && scroll <= window.innerHeight + window.innerHeight * 1.2) {
+            else if (window.scrollY > window.innerHeight && window.scrollY <= window.innerHeight + window.innerHeight * 1.2) {
                 document.getElementById("about").classList.add('active')
                 document.getElementById("home").classList.remove('active')
                 document.getElementById("department").classList.remove('active')
                 document.getElementById("team").classList.remove('active')
             }
-            else if (scroll > window.innerHeight * 2.0 && scroll <= window.innerHeight + window.innerHeight * 2.2) {
+            else if (window.scrollY > window.innerHeight * 2.0 && window.scrollY <= window.innerHeight + window.innerHeight * 2.2) {
                 document.getElementById("home").classList.remove('active')
                 document.getElementById("about").classList.remove('active')
                 document.getElementById("department").classList.add('active')
                 document.getElementById("team").classList.remove('active')
             }
-            else if (scroll > window.innerHeight + window.innerHeight * 2.2) {
+            else if (window.scrollY > window.innerHeight + window.innerHeight * 2.2) {
                 document.getElementById("home").classList.remove('active')
                 document.getElementById("about").classList.remove('active')
                 document.getElementById("department").classList.remove('active')
@@ -87,7 +93,7 @@ export default function Sidebar() {
             }
         }
         },
-        [scroll, setScroll,match],
+        [ match],
     )
 
 

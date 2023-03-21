@@ -111,57 +111,57 @@ export default function HeartDetails() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: .5 }}
                 >
-                    <h1 className='display-5' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Heart Report</h1>
+                    <h1 className='display-5' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Heart Disease Test</h1>
                     <div className='pos-rel' style={{ paddingBottom: "15px" }}>
                         <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
                     </div>
                     <div className="row mb-8">
 
-                        <div className='col-xl-4 col-lg-5 pb-3'>
-                            <InputSlider HandleStorage={HandleStorage} parameter={"Chest Pain"} min={0} max={3} default={0} details={"Chest Pain Type"} />
+                        <div className='col-xl-4 col-lg-6 col-md-6 pb-3'>
+                            <InputSlider HandleStorage={HandleStorage} parameter={"Chest Pain"} min={0} max={3} default={0} details={"Chest Pain Type  (Value 0: typical angina, Value 1: atypical angina, Value 2: non-anginal pain, Value 3: asymptomatic)"} />
 
                         </div>
-                        <div className='col-xl-4 col-lg-5 pb-3'>
+                        <div className='col-xl-4 col-lg-6 col-md-6 pb-3'>
 
                             <InputSlider HandleStorage={HandleStorage} parameter={"Trestbps"} min={94} max={200} default={94} details={"Resting Blood Pressure (in mm Hg)"} />
                         </div>
-                        <div className='col-xl-4 col-lg-5 pb-3'>
+                        <div className='col-xl-4 col-lg-6 col-md-6 pb-3'>
 
                             <InputSlider HandleStorage={HandleStorage} parameter={"Cholestoral"} min={126} max={564} default={126} details={"Serum Cholestoral in mg/dt"} />
                         </div>
 
 
-                        <div className='col-xl-4 col-lg-5 pb-3'>
+                        <div className='col-xl-4 col-lg-6 col-md-6 pb-3'>
                             <InputSlider HandleStorage={HandleStorage} parameter={"Fasting Blood Sugar"} min={0} max={1} default={0} details={"Fasting Blood Sugar >120mg/dl (1 = true; 0 = false)"} />
 
                         </div>
-                        <div className='col-xl-4 col-lg-5 pb-3'>
+                        <div className='col-xl-4 col-lg-6 col-md-6 pb-3'>
 
-                            <InputSlider HandleStorage={HandleStorage} parameter={"Rest ECG"} min={0} max={2} default={0} details={"Resting Electrocardiographic Results"} />
+                            <InputSlider HandleStorage={HandleStorage} parameter={"Rest ECG"} min={0} max={2} default={0} details={"Resting Electrocardiographic Results (0 = normal, 1 = having ST-T wave abnormality, 2 = showing probable or definite left ventricular hypertrophy by Estes' criteria)"} />
                         </div>
-                        <div className='col-xl-4 col-lg-5 pb-3'>
+                        <div className='col-xl-4 col-lg-6 col-md-6 pb-3'>
 
                             <InputSlider HandleStorage={HandleStorage} parameter={"Exang"} min={0} max={1} default={0} details={"Exercise Induced Angina (1 = yes; 0 = no)"} />
                         </div>
-                        <div className='col-xl-4 col-lg-5 pb-3'>
+                        <div className='col-xl-4 col-lg-6 col-md-6 pb-3'>
 
-                            <InputSlider HandleStorage={HandleStorage} parameter={"Old Peak"} min={0} max={7} default={0} details={"ST depression induced by exercise relative to rest"} />
+                            <InputSlider HandleStorage={HandleStorage} parameter={"Old Peak"} min={0} max={7} default={0} details={"ST depression induced by exercise relative to rest ('ST' relates to positions on the ECG plot.)"} />
                         </div>
-                        <div className='col-xl-4 col-lg-5 pb-3'>
-                            <InputSlider HandleStorage={HandleStorage} parameter={"Slope"} min={0} max={2} default={0} details={"The Slope of the peak exercise ST segment"} />
+                        <div className='col-xl-4 col-lg-6 col-md-6 pb-3'>
+                            <InputSlider HandleStorage={HandleStorage} parameter={"Slope"} min={0} max={2} default={0} details={"The Slope of the peak exercise ST segment (Value 0: upsloping, Value 1: flat, Value 2: downsloping)"} />
                         </div>
-                        <div className='col-xl-4 col-lg-5 pb-3'>
+                        <div className='col-xl-4 col-lg-6 col-md-6 pb-3'>
                             <InputSlider HandleStorage={HandleStorage} parameter={"CA"} min={0} max={4} default={0} details={"Number of major vessels (0-3) colored by flourosopy"} />
                         </div>
-                        <div className='col-xl-4 col-lg-5 pb-3'>
-                            <InputSlider HandleStorage={HandleStorage} parameter={"Thal"} min={0} max={3} default={0} details={"1 = Normal; 2 = Fixed Defect; 3 = Reversible Defect"} />
+                        <div className='col-xl-4 col-lg-6 col-md-6 pb-3'>
+                            <InputSlider HandleStorage={HandleStorage} parameter={"Thal"} min={0} max={3} default={0} details={"A blood disorder called thalassemia (1 = Normal; 2 = Fixed Defect; 3 = Reversible Defect)"} />
                         </div>
                     </div>
 
 
                 </motion.div>
                 <div className='' style={{ position: "absolute", bottom: 0, paddingBottom: "0.5rem" }}>
-                    <Link to="/"><button type="button" className="btn btn-primary rounded-2 ms-auto me-auto me-4 my-4 btn_hover gray-bg" data-mdb-ripple-color="var(--first-color)" style={{ borderColor: "var(--first-color)", padding: "9px 20px", fontSize: "14px", marginTop: "20px", color: 'var(--first-color)', fontFamily: 'SF Mono' }}><BiChevronLeft size={24} style={{ verticalAlign: "-7.5px" }} />  Back</button></Link>
+                    <Link to="/form/disease"><button type="button" className="btn btn-primary rounded-2 ms-auto me-auto me-4 my-4 btn_hover gray-bg" data-mdb-ripple-color="var(--first-color)" style={{ borderColor: "var(--first-color)", padding: "9px 20px", fontSize: "14px", marginTop: "20px", color: 'var(--first-color)', fontFamily: 'SF Mono' }}><BiChevronLeft size={24} style={{ verticalAlign: "-7.5px" }} />  Back</button></Link>
                 </div>
                 <div className='' style={{ paddingRight: "3rem", position: "absolute", bottom: 0, right: 0, paddingBottom: "0.5rem" }}>
                     <button onClick={handleSubmit} type="button" className="btn btn-primary rounded-2 ms-auto me-auto me-4 my-4 btn_hover" data-mdb-ripple-color="var(--first-color)" style={{ background: "var(--first-color) var(--mdb-gradient)", borderColor: "var(--first-color)", padding: "9px 20px", fontSize: "14px", marginTop: "20px", color: '#FFF', fontFamily: 'SF Mono' }}>Next <BiChevronRight size={24} style={{ verticalAlign: "-7.5px" }} /> </button>
