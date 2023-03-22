@@ -197,7 +197,7 @@ export default function DiabetesDiet() {
 
   return (
     <section className='d-flex align-items-start form gray-bg' style={{ minHeight: window.innerWidth > 800 ? "78vh" : "76vh", paddingTop: "30px", flexDirection: 'column' }}>
-      <div className="container" >
+      <div className="container-fluid pe-lg-5" >
         <motion.div
           initial={{ opacity: 0, x: -15 }}
           animate={{ opacity: 1, x: 0 }}
@@ -208,8 +208,9 @@ export default function DiabetesDiet() {
           <div className='pos-rel' style={{ paddingBottom: "20px" }}>
             <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
           </div>
+          <div className='mbox'>
           <div className="row  mb-5  align-items-center ">
-            <div className="col-xl-6 col-lg-6 mb-4 mb-md-0" style={{ paddingBottom: "20px" }}>
+            <div className="col-xl-6 col-lg-6 " style={{ paddingBottom: "20px" }}>
              <div className='table-responsive-sm'>
               <table className="table table-sm ">
                 <thead>
@@ -259,13 +260,15 @@ export default function DiabetesDiet() {
               </table>
               </div>
             </div>
-            <div className="col-xl-6 col-lg-6 mb-4 mb-md-0" style={{ paddingBottom: "20px" }}>
+            <div className="col-xl-6 col-lg-6 " style={{ paddingBottom: "20px" }}>
              
             <ReactApexChart options={chartData3_2} series={chartData3_2.series} type="donut"  />
             </div>
           </div>
+          </div>
           <div className="row  mb-9  align-items-start ">
-            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-4 mb-md-0" style={{ paddingBottom: "20px" }}>
+            <div className="col-xl-6 col-lg-6 col-md-6 " >
+            <div className='mbox'>
               <h1 className='display-6' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Food To Eat</h1>
               <div className='pos-rel' style={{ paddingBottom: "15px" }}>
                 <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
@@ -278,9 +281,11 @@ export default function DiabetesDiet() {
                 <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToEat[0]["food5"] : foodToEat[1]["food5"]}</li>
                 <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToEat[0]["food6"] : foodToEat[1]["food6"]}</li>
               </div>
+              </div>
 
             </div>
-            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-4 mb-md-0">
+            <div className="col-xl-6 col-lg-6 col-md-6  mb-4 ">
+            <div className='mbox'>
               <h1 className='display-6' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Food To Avoid</h1>
               <div className='pos-rel' style={{ paddingBottom: "15px" }}>
                 <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
@@ -293,6 +298,7 @@ export default function DiabetesDiet() {
                 <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToAvoid[0]["food5"] : foodToAvoid[1]["food5"]}</li>
                 <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToAvoid[0]["food6"] : foodToAvoid[1]["food6"]}</li>
 
+              </div>
               </div>
             </div>
           </div>

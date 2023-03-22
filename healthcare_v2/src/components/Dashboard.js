@@ -439,10 +439,10 @@ export default function Dashboard() {
                                 <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
                             </div>
                             <div className="row  justify-content-between mb-2 flex-wrap">
-                                <div className="col-xl-6 col-lg-5 mb-4 mb-md-0  pe-0 " style={{ width: "48%", borderRadius: "10px" }}>
+                                <div className="col-xl-6 col-lg-6 mb-4  pe-0 " style={{  borderRadius: "10px" }}>
                                     <ReactApexChart options={chartData} series={chartData.series} type="area"/>
                                 </div>
-                                <div className="col-xl-6 col-lg-5 mb-4 mb-md-0  pe-0 " style={{ width: "48%", borderRadius: "10px" }}>
+                                <div className="col-xl-6 col-lg-6 mb-4  pe-0 " style={{  borderRadius: "10px" }}>
                                     <ReactApexChart options={chartData2} series={chartData2.series} type="area"/>
                                 </div>
                             </div>

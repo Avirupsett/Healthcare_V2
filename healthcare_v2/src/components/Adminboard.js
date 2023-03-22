@@ -739,7 +739,7 @@ export default function Adminboard() {
             fontSize: '14px',
             fontFamily: "Calibre R",
             horizontalAlign: 'left',
-            position: `${symptomkeys_monthly.length > 25 ? 'bottom' : 'right'}`,
+            position: `${window.innerWidth<450 ||symptomkeys_monthly.length > 25 ? 'bottom' : 'right'}`,
             labels: {
                 colors: "var(--text-color)",
             }
@@ -972,6 +972,7 @@ export default function Adminboard() {
             // position: '',
             // width: 400
             // position: 'top',
+            position: `${window.innerWidth<450 ? 'bottom' : 'right'}`,
             fontSize: '14px',
             fontFamily: "Calibre R",
             labels: {
@@ -1048,10 +1049,10 @@ export default function Adminboard() {
                                 <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
                             </div>
                             <div className="row  justify-content-between mb-2 flex-wrap">
-                                <div className="col-xl-6 col-lg-5 mb-4 mb-md-0  pe-0 " style={{ width: "48%", borderRadius: "10px" }}>
+                                <div className="col-xl-6 col-lg-6 mb-4  pe-0 " style={{  borderRadius: "10px" }}>
                                     <ReactApexChart options={chartData} series={chartData.series} type="area" />
                                 </div>
-                                <div className="col-xl-6 col-lg-5 mb-4 mb-md-0  pe-0 " style={{ width: "48%", borderRadius: "10px" }}>
+                                <div className="col-xl-6 col-lg-6 mb-4  pe-0 " style={{ borderRadius: "10px" }}>
                                     <ReactApexChart options={chartData2} series={chartData2.series} type="area" />
                                 </div>
                             </div>
@@ -1227,10 +1228,10 @@ export default function Adminboard() {
                                         </select>
                                     </span>
                                 </div>
-                               <div className="col-xl-6 col-lg-5 mb-4 mb-md-0  pe-0 " style={{ width: "48%", borderRadius: "10px" }}>
+                               <div className="col-xl-6 col-lg-6 mb-4  pe-0 " style={{ borderRadius: "10px" }}>
                                     <ReactApexChart options={chartData3_1} series={chartData3_1.series} type="bar" height={symptomkeys_monthly.length > 10 ? `${20 * symptomkeys_monthly.length}px` : `300px`} />
                                 </div>
-                                    <div className="col-xl-6 col-lg-5 mb-4 mb-md-0  pe-0 " style={{ width: "49%", borderRadius: "10px" }}>
+                                    <div className="col-xl-6 col-lg-6 mb-4 pe-0 " style={{ borderRadius: "10px" }}>
                                         <ReactApexChart options={chartData3_2} series={chartData3_2.series} type="donut" height={symptomkeys_monthly.length > 10 ? `${20 * symptomkeys_monthly.length}px` : `400px`} />
                                     </div>
                             </div>
@@ -1405,10 +1406,10 @@ export default function Adminboard() {
                                         </select>
                                     </span>
                                 </div>
-                                <div className="col-xl-6 col-lg-5 mb-4 mb-md-0  pe-0 " style={{ width: "48%", borderRadius: "10px" }}>
+                                <div className="col-xl-6 col-lg-6 mb-4 pe-0 " style={{  borderRadius: "10px" }}>
                                     <ReactApexChart options={chartData4_1} series={chartData4_1.series} type="bar" height={diseasekeys_monthly.length > 10 ? `${25 * diseasekeys_monthly.length}px` : `250px`} />
                                 </div>
-                                <div className="col-xl-6 col-lg-5 mb-4 mb-md-0  pe-0 " style={{ width: "49%", borderRadius: "10px" }}>
+                                <div className="col-xl-6 col-lg-6 mb-4  pe-0 " style={{  borderRadius: "10px" }}>
                                     <ReactApexChart options={chartData4_2} series={chartData4_2.series} type="donut" />
                                 </div>
                             </div>
@@ -1417,7 +1418,7 @@ export default function Adminboard() {
                         <div className='pos-rel' style={{ paddingBottom: "24px" }}>
                             <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
                         </div>
-                        <CacheProvider value={muiCache} >
+                         <CacheProvider value={muiCache} >
                             <ThemeProvider theme={createTheme()}>
 
                                 <MUIDataTable
@@ -1427,7 +1428,7 @@ export default function Adminboard() {
                                     options={options}
                                 />
                             </ThemeProvider>
-                        </CacheProvider>
+                        </CacheProvider> 
                     </div>}
             </motion.div>
 

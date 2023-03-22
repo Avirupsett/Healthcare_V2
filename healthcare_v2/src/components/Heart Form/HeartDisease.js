@@ -116,7 +116,7 @@ export default function HeartDisease() {
     return (
 
         <section className='d-flex align-items-start form gray-bg' style={{ minHeight: window.innerWidth > 800 ? "78vh" : "76vh", paddingTop: "30px", flexDirection: 'column' }}>
-            <div className="container" >
+            <div className="container-fluid pe-lg-5" >
                 <motion.div
                     initial={{ opacity: 0, x: -25 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -127,10 +127,11 @@ export default function HeartDisease() {
                     <div className='pos-rel' style={{ paddingBottom: "20px" }}>
                         <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
                     </div>
+                    <div className="mbox mb-5">
                     <div className="row  justify-content-between mb-8 flex-wrap-reverse">
-                        <div className="col-xxl-7 col-xl-7 col-lg-7 col-md-7 col-sm-6 pe-0 " style={{ borderRadius: "10px", marginBottom: "80px" }}>
+                        <div className="col-xxl-7 col-xl-7 col-lg-7 col-md-7  pe-0 " style={{ borderRadius: "10px", marginBottom: "80px" }}>
                             <div className='fs-4 selected2 d-flex' style={{ fontFamily: "Calibre R" }}>
-                                <div className='' style={{ fontFamily: "Calibre R", color: "var(--first-color)", letterSpacing: '1.2px', minWidth: "max-content", fontWeight: 600, paddingRight: "15px", paddingLeft: "5px" }}>Heart Disease : </div>
+                                <div className='' style={{ fontFamily: "Calibre R", color: "var(--first-color)", letterSpacing: '1.2px', minWidth: "max-content", fontWeight: 600, paddingRight: "15px"}}>Heart Disease : </div>
                                 <div style={{ paddingBottom: "20px" }}>
                                     {disease === -1 ? <div className="spinner-border text-secondary spinner-border-sm" role="status">
                                         <span className="visually-hidden">Loading...</span>
@@ -138,7 +139,7 @@ export default function HeartDisease() {
                                 </div>
                             </div>
                             <div className='fs-4 selected2 d-flex' style={{ fontFamily: "Calibre R" }}>
-                                <div className='' style={{ fontFamily: "Calibre R", color: "var(--first-color)", letterSpacing: '1.2px', minWidth: "max-content", fontWeight: 600, paddingRight: "15px", paddingLeft: "5px" }}>Description : </div>
+                                <div className='' style={{ fontFamily: "Calibre R", color: "var(--first-color)", letterSpacing: '1.2px', minWidth: "max-content", fontWeight: 600, paddingRight: "15px" }}>Description : </div>
                                 <div style={{ paddingBottom: "20px" }}>
                                     {disease === -1 ? <div className="spinner-border text-secondary spinner-border-sm" role="status">
                                         <span className="visually-hidden">Loading...</span>
@@ -146,7 +147,7 @@ export default function HeartDisease() {
                                 </div>
                             </div>
                             <div className='fs-4 selected2 d-flex' style={{ fontFamily: "Calibre R" }}>
-                                <div className='' style={{ fontFamily: "Calibre R", color: "var(--first-color)", letterSpacing: '1.2px', minWidth: "max-content", fontWeight: 600, paddingRight: "15px", paddingLeft: "5px" }}>Medicines : </div>
+                                <div className='' style={{ fontFamily: "Calibre R", color: "var(--first-color)", letterSpacing: '1.2px', minWidth: "max-content", fontWeight: 600, paddingRight: "15px"}}>Medicines : </div>
                                 <div style={{ paddingBottom: "20px" }}>
                                     {disease === -1 ? <div className="spinner-border text-secondary spinner-border-sm" role="status">
                                         <span className="visually-hidden">Loading...</span>
@@ -157,7 +158,7 @@ export default function HeartDisease() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 mb-4  pe-0 me-5 pb-3" style={{ borderRadius: "10px" }}>
+                        <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4 mb-4  pe-0 me-5 pb-3" style={{ borderRadius: "10px" }}>
                             {/* <ReactApexChart options={chartData3_2} series={chartData3_2.series} type="donut" height={`280px`} /> */}
                             <CircularProgressbar value={disease === -1 ? 0.0 : parseFloat(disease) * 100} text={`${disease === -1 ? 0.0 : parseInt(disease * 100)}%`}
                                 styles={buildStyles({
@@ -183,6 +184,7 @@ export default function HeartDisease() {
                                 })}
                             />
                         </div>
+                    </div>
                     </div>
                 </motion.div>
                 <div className='' style={{ position: "absolute", bottom: 0, paddingBottom: "0.5rem" }}>

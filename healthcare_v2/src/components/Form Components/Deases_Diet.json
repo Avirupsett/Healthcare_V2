@@ -1,0 +1,296 @@
+[
+  {
+     "Disease":"AIDS",
+     "Diet":"Choose softer fruits, such as bananas or pears. ",
+     "Diet1":"Stay away from acidic foods, such as oranges, lemons, and tomatoes.",
+     "Diet2":"Eat the right amount of food to maintain a healthy weight.",
+     "Diet3":"Bread, pasta, oatmeal, breakfast cereals, tortillas and grits."
+  },
+  {
+     "Disease":"Acne",
+     "Diet":"Yellow and Orange fruits and vegetables such as carrots, apricots, and sweet potatoes.",
+     "Diet1":"Spinach and other dark green and leafy vegetables.",
+     "Diet2":"Whole-wheat bread .",
+     "Diet3":"Brown rice."
+  },
+  {
+     "Disease":"Alcoholic hepatitis",
+     "Diet":"Eat plenty of nutrient-dense, minimally processed ingredients.",
+     "Diet1":"Fruits & Vegetables.",
+     "Diet2":"Whole grains & Legumes.",
+     "Diet3":"Diets with 1-1.5 g/kg protein and 30-40 kcal/kg body weight."
+  },
+  {
+     "Disease":"Allergy",
+     "Diet":"Tropical Fruits. High in Vitamin C and bromelain a chemical that can help relieve asthma.",
+     "Diet1":"Fatty Fishes. Full of omega-3 fatty acids that have been proven to greatly lessen allergy symptoms.",
+     "Diet2":"Onions & Yogurt.",
+     "Diet3":"Local Honey."
+  },
+  {
+     "Disease":"Arthritis",
+     "Diet":"Nuts.",
+     "Diet1":"Fatty Fishes. ",
+     "Diet2":"Olive oil.",
+     "Diet3":"Berries."
+  },
+  {
+     "Disease":"Bronchial Asthma",
+     "Diet":"Eat plenty of fruits and vegetables.",
+     "Diet1":"Citrus and Orange Juice.",
+     "Diet2":"Avoid Eggs,Cow's milk,Peanuts etc.",
+     "Diet3":"Good source of antioxidants such as beta carotene and vitamins C and E, which may help reduce lung swelling and irritation (inflammation) caused by cell-damaging chemicals known as free radicals."
+  },
+  {
+     "Disease":"Cervical spondylosis",
+     "Diet":"Fish.",
+     "Diet1":"Nuts.",
+     "Diet2":"Oil seeds.",
+     "Diet3":"Avoid taking curd and baked foods."
+  },
+  {
+     "Disease":"Chicken pox",
+     "Diet":"Mashed potatoes.",
+     "Diet1":"Beans and Lentils.",
+     "Diet2":"Sweet potatoes.",
+     "Diet3":"Scrambled eggs."
+  },
+  {
+     "Disease":"Chronic cholestasis",
+     "Diet":"Foods containing <3g per serving are considered low fat.",
+     "Diet1":"Fat restriction to <20 g/day is encouraged to manage symptoms of fat malabsorption.",
+     "Diet2":"Fruits, vegetables, lean meat or other protein sources during pregnancy.",
+     "Diet3":"Avoid full fat dairy products."
+  },
+  {
+     "Disease":"Common Cold",
+     "Diet":"Chicken soup.",
+     "Diet1":"Coconut water.",
+     "Diet2":"Honey.",
+     "Diet3":"Ginger."
+  },
+  {
+     "Disease":"Covid",
+     "Diet":"Fruits & Vegetables.",
+     "Diet1":"Legumes (e.g. lentils, beans).",
+     "Diet2":"Nuts and Whole grains.",
+     "Diet3":"Meat, fish, eggs and milk."
+  },
+  {
+     "Disease":"Dengue",
+     "Diet":"Foods with Rich in Vitamin C.",
+     "Diet1":"Papaya.",
+     "Diet2":"Coconut water.",
+     "Diet3":"Avoid Spicy Foods,Caffeine,Fatty Foods etc."
+  },
+  {
+     "Disease":"Diabetes ",
+     "Diet":"Avoid Suger.",
+     "Diet1":"Include more nonstarchy vegetables, such as broccoli, spinach, and green beans.",
+     "Diet2":"Focus on whole foods instead of highly processed foods as much as possible.",
+     "Diet3":"Cinnamon and Turmeric."
+  },
+  {
+     "Disease":"Dimorphic hemorrhoids(piles)",
+     "Diet":"Increase your water intake.",
+     "Diet1":"Eat more foods that are high in fiber.",
+     "Diet2":"Avoid Processed foods such as frozen meals, fast food and deep fried food.",
+     "Diet3":"Apple & Banana."
+  },
+  {
+     "Disease":"Drug Reaction",
+     "Diet":"Avoid Nutritional deficiencies.",
+     "Diet1":"Eat plenty water.",
+     "Diet2":"Fruits & Vegetables.",
+     "Diet3":"Avoid Drugs."
+  },
+  {
+     "Disease":"Fungal infection",
+     "Diet":"Puratos Happy Gut range.",
+     "Diet1":"Mud Therapy.",
+     "Diet2":"Coconut Oil.",
+     "Diet3":"Garlic & Onion."
+  },
+  {
+     "Disease":"GERD",
+     "Diet":"Non-citrus fruits (bananas, apples, pears, watermelon, etc.).",
+     "Diet1":"Ginger.",
+     "Diet2":"Lean meat and seafood.",
+     "Diet3":"Oats."
+  },
+  {
+     "Disease":"Gastroenteritis",
+     "Diet":"Avoid Spicy food.",
+     "Diet1":"Fruits & Vegetables.",
+     "Diet2":"Coconut water.",
+     "Diet3":"ORS."
+  },
+  {
+     "Disease":"Heart attack",
+     "Diet":"Eat more vegetables and fruits.",
+     "Diet1":"Nuts & Seeds.",
+     "Diet2":"Fish & Seafood.",
+     "Diet3":"Whole grains."
+  },
+  {
+     "Disease":"Hepatitis A",
+     "Diet":"Plenty of fruits and vegetables.",
+     "Diet1":"Whole grains such as oats, brown rice, barley, and quinoa.",
+     "Diet2":"Low-fat or non-fat dairy products.",
+     "Diet3":"Healthy fats like those in nuts, avocados, and olive oil."
+  },
+  {
+     "Disease":"Hepatitis B",
+     "Diet":"Eat a healthy diet of fruit.",
+     "Diet1":"Whole grains.",
+     "Diet2":"Fish and lean meat.",
+     "Diet3":"Lots of vegetables."
+  },
+  {
+     "Disease":"Hepatitis C",
+     "Diet":"Lots of fruits and vegetables.",
+     "Diet1":"Lean protein(fish, skinless chicken, egg whites).",
+     "Diet2":"Whole grains.",
+     "Diet3":"Healthy fats like those in nuts, avocados, and olive oil."
+  },
+  {
+     "Disease":"Hepatitis D",
+     "Diet":"Plenty of fruits and vegetables.",
+     "Diet1":"Avoid eating raw or undercooked shellfish (e.g. clams, mussels, oysters, scallops).",
+     "Diet2":"Low-fat or non-fat dairy products.",
+     "Diet3":"Whole grains such as oats, brown rice, barley, and quinoa."
+  },
+  {
+     "Disease":"Hepatitis E",
+     "Diet":"Regular low calorie meals containing protein.",
+     "Diet1":"Vitamins (in fruit and vegetables)",
+     "Diet2":"Plenty of fruits and vegetables.",
+     "Diet3":"Healthy fats like those in nuts, avocados, and olive oil."
+  },
+  {
+     "Disease":"Hypertension ",
+     "Diet":"Citrus fruits(grapefruit, oranges etc.).",
+     "Diet1":"Salmon and other fatty fish.",
+     "Diet2":"Swiss chard.",
+     "Diet3":"Beans and lentils ."
+  },
+  {
+     "Disease":"Hyperthyroidism",
+     "Diet":"Non-iodized salt.",
+     "Diet1":"Fresh or canned fruit.",
+     "Diet2":"Homemade bread or breads made without salt, dairy, and eggs.",
+     "Diet3":"Oats."
+  },
+  {
+     "Disease":"Hypoglycemia",
+     "Diet":"Fruit juice.",
+     "Diet1":"Fat-free milk.",
+     "Diet2":"Honey.",
+     "Diet3":"Fresh or dried fruit. Fruits that provide the appropriate amount of carbohydrates include half a banana, 15 grapes, two tablespoons of raisins or a small apple or orange."
+  },
+  {
+     "Disease":"Hypothyroidism",
+     "Diet":"Lean meats.",
+     "Diet1":"Fresh fruits and vegetables.",
+     "Diet2":"Legumes.",
+     "Diet3":"Nuts & olive oil."
+  },
+  {
+     "Disease":"Impetigo",
+     "Diet":"Garlic.",
+     "Diet1":"Milk.",
+     "Diet2":"Seeds & nuts.",
+     "Diet3":"Fruits & vegetables."
+  },
+  {
+     "Disease":"Jaundice",
+     "Diet":"Water.",
+     "Diet1":"Fresh fruits and vegetables.",
+     "Diet2":"Coffee and herbal tea.",
+     "Diet3":"Lean proteins."
+  },
+  {
+     "Disease":"Malaria",
+     "Diet":"Fresh fruits and vegetables.",
+     "Diet1":"Avoid a high fibre foods such as whole grain cereals, green leafy vegetables, thick skin fruits, etc.",
+     "Diet2":"Avoid Fried foods, processed foods, junk foods, oily and spicy foods, pickle, etc.",
+     "Diet3":"Coconut water & lemon water."
+  },
+  {
+     "Disease":"Migraine",
+     "Diet":"Spinach could help migraines go away. This dark leafy green vegetable is particularly rich in magnesium.",
+     "Diet1":"Almonds.",
+     "Diet2":"Dark Chocolate.",
+     "Diet3":"Fatty fish."
+  },
+  {
+     "Disease":"Osteoarthritis",
+     "Diet":"Oily fish. Oily fish, such as salmon and mackerel, are full of omega-3 fatty acids, which have natural anti-inflammatory properties that may help reduce OA symptoms.",
+     "Diet1":"Fruits and veggies. Fruits and veggies contain helpful antioxidants that reduce inflammation in the body.",
+     "Diet2":"Nuts.",
+     "Diet3":"Garlic & onions."
+  },
+  {
+     "Disease":"Paralysis (brain hemorrhage)",
+     "Diet":"Avocados.",
+     "Diet1":"Salmon (EPA) Omega-3 fatty acids help maintain brain-derived neurotrophic factor levels and promote neuroplasticity.",
+     "Diet2":"Nuts and Seeds (Vitamin E).",
+     "Diet3":"Eggs."
+  },
+  {
+     "Disease":"Paroxysmal Positional Vertigo",
+     "Diet":"Strawberries.",
+     "Diet1":"Raspberries.",
+     "Diet2":"Blueberries.",
+     "Diet3":"Pineapples."
+  },
+  {
+     "Disease":"Peptic ulcer disease",
+     "Diet":"Eating a balanced diet that contains whole grains, fruits, vegetables.",
+     "Diet1":"Considering use of a multivitamin.",
+     "Diet2":"Avoiding coffee, both caffeinated and decaffeinated.",
+     "Diet3":"Avoiding caffeine from other sources, such as chocolate or soda."
+  },
+  {
+     "Disease":"Pneumonia",
+     "Diet":"The vitamin- C rich citrus fruits (oranges, berries, kiwi etc.).",
+     "Diet1":"Avoid Salty Foods. Sodium causes fluid retention, which can lead to shortness of breath in patients who have lung disease.",
+     "Diet2":"Avoid Dairy Products.",
+     "Diet3":"Whole grains."
+  },
+  {
+     "Disease":"Psoriasis",
+     "Diet":"Fish, lean protein or plant-based proteins such as tofu or tempeh.",
+     "Diet1":"Fruits & vegetables.",
+     "Diet2":"Legumes (beans & lentils).",
+     "Diet3":"Nuts & seeds."
+  },
+  {
+     "Disease":"Tuberculosis",
+     "Diet":"Foods Rich in Vitamin A, C and E.",
+     "Diet1":"Meat.",
+     "Diet2":"Poultry, fish & milk.",
+     "Diet3":"Dried beans, peas & lentils."
+  },
+  {
+     "Disease":"Typhoid",
+     "Diet":"Cooked vegetables: potatoes, carrots, green beans, beets, squash.",
+     "Diet1":"Fruits: ripe bananas, melons, applesauce, canned fruit.",
+     "Diet2":"Grains: white rice, pasta, white bread, crackers.",
+     "Diet3":"Proteins: eggs, chicken, turkey, fish, tofu, ground meat."
+  },
+  {
+     "Disease":"Urinary tract infection",
+     "Diet":"Plain Greek yogurt.",
+     "Diet1":"Pickles.",
+     "Diet2":"Sauerkraut.",
+     "Diet3":"Tomatoes, broccoli & spinach."
+  },
+  {
+     "Disease":"Varicose veins",
+     "Diet":"The foods rich in fiber.",
+     "Diet1":"Avoid added Sugars.",
+     "Diet2":"Apples & berries.",
+     "Diet3":"Avoid salt and sodium, the sodium in salt can cause the body to retain water."
+  }
+]

@@ -63,7 +63,7 @@ export default function DiabetesDisease() {
     const location = useLocation();
 
     const handleSubmit = () => {
-        history.push({pathname:"/diabetesform/diet",state:{disease:disease,selected:location.state.selected}})
+        history.push({ pathname: "/diabetesform/diet", state: { disease: disease, selected: location.state.selected } })
     }
     const [disease, setdisease] = useState(-1)
     const [med, setMed] = useState(-1)
@@ -116,7 +116,7 @@ export default function DiabetesDisease() {
     return (
 
         <section className='d-flex align-items-start form gray-bg' style={{ minHeight: window.innerWidth > 800 ? "78vh" : "76vh", paddingTop: "30px", flexDirection: 'column' }}>
-            <div className="container" >
+            <div className="container-fluid pe-lg-5" >
                 <motion.div
                     initial={{ opacity: 0, x: -25 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -127,61 +127,63 @@ export default function DiabetesDisease() {
                     <div className='pos-rel' style={{ paddingBottom: "20px" }}>
                         <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
                     </div>
-                    <div className="row  justify-content-between mb-8 flex-wrap-reverse">
-                        <div className="col-xxl-7 col-xl-7 col-lg-7 col-md-7 col-sm-6 pe-0 " style={{ borderRadius: "10px", marginBottom: "80px" }}>
-                            <div className='fs-4 selected2 d-flex' style={{ fontFamily: "Calibre R" }}>
-                                <div className='' style={{ fontFamily: "Calibre R", color: "var(--first-color)", letterSpacing: '1.2px', minWidth: "max-content", fontWeight: 600, paddingRight: "15px", paddingLeft: "5px" }}>Diabetes : </div>
-                                <div style={{ paddingBottom: "20px" }}>
-                                    {disease === -1 ? <div className="spinner-border text-secondary spinner-border-sm" role="status">
-                                        <span className="visually-hidden">Loading...</span>
-                                    </div> : <div style={{ color: "var(--text-color)" }}>{parseFloat(disease) > 0.5 ? "Positive" : `Negative`}</div>}
+                    <div className="mbox mb-5">
+                        <div className="row  justify-content-between flex-wrap-reverse">
+                            <div className="col-xxl-7 col-xl-7 col-lg-7 col-md-7  pe-0 " style={{ borderRadius: "10px", marginBottom: "80px" }}>
+                                <div className='fs-4 selected2 d-flex' style={{ fontFamily: "Calibre R" }}>
+                                    <div className='' style={{ fontFamily: "Calibre R", color: "var(--first-color)", letterSpacing: '1.2px', minWidth: "max-content", fontWeight: 600, paddingRight: "15px"}}>Diabetes : </div>
+                                    <div style={{ paddingBottom: "20px" }}>
+                                        {disease === -1 ? <div className="spinner-border text-secondary spinner-border-sm" role="status">
+                                            <span className="visually-hidden">Loading...</span>
+                                        </div> : <div style={{ color: "var(--text-color)" }}>{parseFloat(disease) > 0.5 ? "Positive" : `Negative`}</div>}
+                                    </div>
+                                </div>
+                                <div className='fs-4 selected2 d-flex' style={{ fontFamily: "Calibre R" }}>
+                                    <div className='' style={{ fontFamily: "Calibre R", color: "var(--first-color)", letterSpacing: '1.2px', minWidth: "max-content", fontWeight: 600, paddingRight: "15px"}}>Description : </div>
+                                    <div style={{ paddingBottom: "20px" }}>
+                                        {disease === -1 ? <div className="spinner-border text-secondary spinner-border-sm" role="status">
+                                            <span className="visually-hidden">Loading...</span>
+                                        </div> : <div style={{ color: "var(--text-color)" }}>{parseFloat(disease) > 0.5 && parseFloat(disease) <= 0.65 ? `Prediabetes - A condition in which blood sugar is high, but not high enough to be type 2 diabetes.\n With lifestyle changes, weight loss and medication, it's possible to bring a blood sugar level back to normal.` : parseFloat(disease) > 0.65 ? `A chronic disease that occurs when the pancreas is no longer able to make insulin, or when the body cannot make good use of the insulin it produces.` : `According to the report, you have been found to be completely free of diabetes`}</div>}
+                                    </div>
+                                </div>
+                                <div className='fs-4 selected2 d-flex' style={{ fontFamily: "Calibre R" }}>
+                                    <div className='' style={{ fontFamily: "Calibre R", color: "var(--first-color)", letterSpacing: '1.2px', minWidth: "max-content", fontWeight: 600, paddingRight: "15px"}}>Medicines : </div>
+                                    <div style={{ paddingBottom: "20px" }}>
+                                        {disease === -1 ? <div className="spinner-border text-secondary spinner-border-sm" role="status">
+                                            <span className="visually-hidden">Loading...</span>
+                                        </div> : med === -1 ? <div style={{ color: "var(--text-color)", width: "max-content" }}>No medication</div> : <div style={{ color: "var(--text-color)", width: "fit-content" }}>
+                                            <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{medicine[med]["Medicine1"]}</li>
+                                            <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{medicine[med]["Medicine2"]}</li>
+                                            <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{medicine[med]["Medicine3"]}</li></div>}
+                                    </div>
                                 </div>
                             </div>
-                            <div className='fs-4 selected2 d-flex' style={{ fontFamily: "Calibre R" }}>
-                                <div className='' style={{ fontFamily: "Calibre R", color: "var(--first-color)", letterSpacing: '1.2px', minWidth: "max-content", fontWeight: 600, paddingRight: "15px", paddingLeft: "5px" }}>Description : </div>
-                                <div style={{ paddingBottom: "20px" }}>
-                                    {disease === -1 ? <div className="spinner-border text-secondary spinner-border-sm" role="status">
-                                        <span className="visually-hidden">Loading...</span>
-                                    </div> : <div style={{ color: "var(--text-color)" }}>{parseFloat(disease) > 0.5 && parseFloat(disease) <= 0.65? `Prediabetes - A condition in which blood sugar is high, but not high enough to be type 2 diabetes.\n With lifestyle changes, weight loss and medication, it's possible to bring a blood sugar level back to normal.` :parseFloat(disease) > 0.65 ?  `A chronic disease that occurs when the pancreas is no longer able to make insulin, or when the body cannot make good use of the insulin it produces.`:`According to the report, you have been found to be completely free of diabetes`}</div>}
-                                </div>
+                            <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4  mb-4 pe-0 me-5 pb-3" style={{ borderRadius: "10px" }}>
+                                {/* <ReactApexChart options={chartData3_2} series={chartData3_2.series} type="donut" height={`280px`} /> */}
+                                <CircularProgressbar value={disease === -1 ? 0.0 : parseFloat(disease) * 100} text={`${disease === -1 ? 0.0 : parseInt(disease * 100)}%`}
+                                    styles={buildStyles({
+                                        // Rotation of path and trail, in number of turns (0-1)
+
+                                        // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                                        strokeLinecap: 'round',
+
+                                        // Text size
+                                        // textSize: '16px',
+
+                                        // How long animation takes to go from one percentage to another, in seconds
+                                        // pathTransitionDuration: 0.5,
+
+                                        // Can specify path transition in more detail, or remove it entirely
+                                        // pathTransition: 'none',
+
+                                        // Colors
+                                        pathColor: `var(--first-color)`,
+                                        textColor: `var(--first-color)`,
+                                        // trailColor: 'var(--text-color)',
+                                        // backgroundColor: 'var(--first-color-light)',
+                                    })}
+                                />
                             </div>
-                            <div className='fs-4 selected2 d-flex' style={{ fontFamily: "Calibre R" }}>
-                                <div className='' style={{ fontFamily: "Calibre R", color: "var(--first-color)", letterSpacing: '1.2px', minWidth: "max-content", fontWeight: 600, paddingRight: "15px", paddingLeft: "5px" }}>Medicines : </div>
-                                <div style={{ paddingBottom: "20px" }}>
-                                    {disease === -1 ? <div className="spinner-border text-secondary spinner-border-sm" role="status">
-                                        <span className="visually-hidden">Loading...</span>
-                                    </div> : med === -1 ? <div style={{ color: "var(--text-color)", width: "max-content" }}>No medication</div> : <div style={{ color: "var(--text-color)", width: "fit-content" }}>
-                                        <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{medicine[med]["Medicine1"]}</li>
-                                        <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{medicine[med]["Medicine2"]}</li>
-                                        <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{medicine[med]["Medicine3"]}</li></div>}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 mb-4 pe-0 me-5 pb-3" style={{  borderRadius: "10px" }}>
-                            {/* <ReactApexChart options={chartData3_2} series={chartData3_2.series} type="donut" height={`280px`} /> */}
-                            <CircularProgressbar value={disease === -1 ? 0.0 : parseFloat(disease) * 100} text={`${disease === -1 ? 0.0 : parseInt(disease * 100)}%`}
-                                styles={buildStyles({
-                                    // Rotation of path and trail, in number of turns (0-1)
-
-                                    // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                                    strokeLinecap: 'round',
-
-                                    // Text size
-                                    // textSize: '16px',
-
-                                    // How long animation takes to go from one percentage to another, in seconds
-                                    // pathTransitionDuration: 0.5,
-
-                                    // Can specify path transition in more detail, or remove it entirely
-                                    // pathTransition: 'none',
-
-                                    // Colors
-                                    pathColor: `var(--first-color)`,
-                                    textColor: `var(--first-color)`,
-                                    // trailColor: 'var(--text-color)',
-                                    // backgroundColor: 'var(--first-color-light)',
-                                })}
-                            />
                         </div>
                     </div>
                 </motion.div>
