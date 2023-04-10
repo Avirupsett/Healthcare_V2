@@ -1027,7 +1027,7 @@ export default function Adminboard() {
         setdiseasekeys_monthly(first2)
     }
     return (
-        <section className='d-flex align-items-start form' style={{ minHeight: window.innerWidth > 800 ? "78vh" : "76vh", paddingTop: "30px", flexDirection: 'column' }}>
+        <section className='d-flex align-items-start form ps-lg-4' style={{ minHeight: window.innerWidth > 800 ? "78vh" : "76vh", paddingTop: "30px", flexDirection: 'column' }}>
 
             <motion.div
                 initial={{ opacity: 0, x: -25 }}
@@ -1042,7 +1042,7 @@ export default function Adminboard() {
                 {isloading === 0 ? <div className="text-center"> <div className="spinner-border text-secondary spinner-border " role="status">
                     <span className="visually-hidden">Loading...</span>
                 </div></div> :
-                    <div className='container'>
+                    <div className='container '>
                         <div className="mb-5" style={{ backgroundColor: "var(--gray-color)", padding: "15px", borderRadius: "10px" }}>
                             <h1 className='display-6 ' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-8px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Overview</h1>
                             <div className='pos-rel' style={{ paddingBottom: "24px" }}>

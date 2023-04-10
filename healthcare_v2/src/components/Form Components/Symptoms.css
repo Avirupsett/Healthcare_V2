@@ -24,3 +24,6 @@ li::marker{
 .dropdown-heading-value{
     color: var(--text-color);
 }
+.options{
+    display:block !important;
+}

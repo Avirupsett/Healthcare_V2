@@ -49,7 +49,7 @@ export default function Details() {
                     if(!user.providerData[0].email){
                         setdisable(false)
                     }
-                    fetch("/", {
+                    fetch("/view", {
                         method: "GET",
                       }).then(response => response.text())
                 }).catch((error) => {
@@ -59,6 +59,7 @@ export default function Details() {
             }
             else {
                 history.push('/')
+                document.getElementById("handlelogin").click()
             }
         }
     }

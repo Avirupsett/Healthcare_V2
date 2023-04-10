@@ -27,13 +27,16 @@ import Footer from './Footer'
 import DiabetesForm from './Diabetes Form/DiabetesForm'
 import HeartForm from './Heart Form/HeartForm'
 import { useLocation } from 'react-router-dom';
+import Pricing from './Pricing'
+import Success01 from './Success/Success03'
+import Success02 from './Success/Success02'
 
 export default function Sidebar() {
     const location = useLocation();
 
     useLayoutEffect(() => {
         window.scrollTo(0, 0);
-      }, [location.pathname]);
+    }, [location.pathname]);
 
     const match = useRouteMatch({
         path: "/",
@@ -66,34 +69,34 @@ export default function Sidebar() {
     const handleActive = useCallback(
         () => {
             if (match.isExact) {
-            // setScroll(window.scrollY)
-            if (window.scrollY >= 0 && window.scrollY <= window.innerHeight) {
-                document.getElementById("home").classList.add('active')
-                document.getElementById("about").classList.remove('active')
-                document.getElementById("department").classList.remove('active')
-                document.getElementById("team").classList.remove('active')
+                // setScroll(window.scrollY)
+                if (window.scrollY >= 0 && window.scrollY <= window.innerHeight) {
+                    document.getElementById("home").classList.add('active')
+                    document.getElementById("about").classList.remove('active')
+                    document.getElementById("department").classList.remove('active')
+                    document.getElementById("team").classList.remove('active')
+                }
+                else if (window.scrollY > window.innerHeight && window.scrollY <= window.innerHeight + window.innerHeight * 1.2) {
+                    document.getElementById("about").classList.add('active')
+                    document.getElementById("home").classList.remove('active')
+                    document.getElementById("department").classList.remove('active')
+                    document.getElementById("team").classList.remove('active')
+                }
+                else if (window.scrollY > window.innerHeight * 2.0 && window.scrollY <= window.innerHeight + window.innerHeight * 2.2) {
+                    document.getElementById("home").classList.remove('active')
+                    document.getElementById("about").classList.remove('active')
+                    document.getElementById("department").classList.add('active')
+                    document.getElementById("team").classList.remove('active')
+                }
+                else if (window.scrollY > window.innerHeight + window.innerHeight * 2.2) {
+                    document.getElementById("home").classList.remove('active')
+                    document.getElementById("about").classList.remove('active')
+                    document.getElementById("department").classList.remove('active')
+                    document.getElementById("team").classList.add('active')
+                }
             }
-            else if (window.scrollY > window.innerHeight && window.scrollY <= window.innerHeight + window.innerHeight * 1.2) {
-                document.getElementById("about").classList.add('active')
-                document.getElementById("home").classList.remove('active')
-                document.getElementById("department").classList.remove('active')
-                document.getElementById("team").classList.remove('active')
-            }
-            else if (window.scrollY > window.innerHeight * 2.0 && window.scrollY <= window.innerHeight + window.innerHeight * 2.2) {
-                document.getElementById("home").classList.remove('active')
-                document.getElementById("about").classList.remove('active')
-                document.getElementById("department").classList.add('active')
-                document.getElementById("team").classList.remove('active')
-            }
-            else if (window.scrollY > window.innerHeight + window.innerHeight * 2.2) {
-                document.getElementById("home").classList.remove('active')
-                document.getElementById("about").classList.remove('active')
-                document.getElementById("department").classList.remove('active')
-                document.getElementById("team").classList.add('active')
-            }
-        }
         },
-        [ match],
+        [match],
     )
 
 
@@ -174,11 +177,15 @@ export default function Sidebar() {
 
         if (email) {
             read_data()
+            read_plan()
         }
     })
     const [read, setRead] = useState(0)
+    // const [read2, setRead2] = useState(0)
     const [email, setemail] = useState("")
     const [isadmin, setisadmin] = useState(0)
+    const [plan, setPlan] = useState("")
+    const [days_left, setDays_left] = useState(-1)
 
     const read_data = async () => {
         if (read === 0) {
@@ -200,7 +207,47 @@ export default function Sidebar() {
             }
         }
     }
+    const read_plan = async () => {
+        // if (read2 === 0) {
+        //     setRead2(1)
+
+            const q = query(collection(db, "payment"), where("uid", "==", userid));
+            const snapshot = await getCountFromServer(q);
+
+            if (snapshot.data().count > 0) {
+                const querySnapshot = await getDocs(q);
+                querySnapshot.forEach((doc) => {
+                    setPlan(doc.data().plan)
+                    sessionStorage.setItem("plan", doc.data().plan)
+                    let fulldate = new Date(doc.data().time.toDate())
+                    let days_exist = new Date(fulldate.getTime() + 86400000 * (doc.data().validity))
+                    let time_difference = days_exist.getTime() - new Date().getTime()
+                    let days_difference = time_difference / (1000 * 60 * 60 * 24)
+                     days_difference = days_difference.toFixed(2)
+                    if (days_difference >= 0) {
+                        setDays_left(days_difference)
+                        sessionStorage.setItem("days_left", days_difference)
+                    }
+                    else if(days_difference < 0) {
+                        sessionStorage.setItem("plan", "Basic")
+                        sessionStorage.setItem("days_left", -1)
+                        setPlan("Basic")
+                        setDays_left(-1)
+                    }
+
+                });
+
+            }
+            else {
+                sessionStorage.setItem("plan", "Basic")
+                sessionStorage.setItem("days_left", -1)
+                setPlan("Basic")
+                setDays_left(-1)
+            }
+        // }
+    }
     const [auth, setauth] = useState(0)
+    const [userid, setUserid] = useState("")
     const authenticate = () => {
 
         // Build Firebase credential with the Google ID token.
@@ -219,11 +266,13 @@ export default function Sidebar() {
                 const auth = getAuth(app);
                 signInWithCredential(auth, credential).then((result) => {
                     const user = result.user;
+                    setUserid(user.uid)
                     setavatar(user.photoURL)
                     setemail(user.providerData[0].email)
                     setfirstname("Hi, " + user.displayName.split(" ")[0] + " 👋")
 
                 }).catch((error) => {
+                    document.getElementById("handlelogin").click()
 
                 });
             }
@@ -232,7 +281,7 @@ export default function Sidebar() {
     const handlelogin = () => {
         Swal.fire({
             html: '<div  style="font-family:Calibre R;margin-bottom:0px;font-size:18px;">Log in to Your Account: <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="mdi-login" width="18" height="18" viewBox="0 0 24 24"><path d="M10,17V14H3V10H10V7L15,12L10,17M10,2H19A2,2 0 0,1 21,4V20A2,2 0 0,1 19,22H10A2,2 0 0,1 8,20V18H10V20H19V4H10V6H8V4A2,2 0 0,1 10,2Z" /></svg></div> ',
-            title:`<h2  style="font-family:Domain Dis;font-size:32px;margin-bottom:0px;margin-top:8px;letter-spacing:1.2px;font-weight:600;">Welcome to RapidCare</h2>`,
+            title: `<h2  style="font-family:Domain Dis;font-size:32px;margin-bottom:0px;margin-top:8px;letter-spacing:1.2px;font-weight:600;">Welcome to RapidCare</h2>`,
             // text:"Log in with one of the following:",
             showDenyButton: true,
             showCloseButton: true,
@@ -334,7 +383,7 @@ export default function Sidebar() {
         </svg>`,
             customClass: {
                 icon: 'no-border'
-              }
+            }
         }).then((result) => {
 
             if (result.isConfirmed) {
@@ -356,7 +405,7 @@ export default function Sidebar() {
 
         const provider = new GoogleAuthProvider();
         provider.setCustomParameters({
-            prompt:"select_account"
+            prompt: "select_account"
         })
         provider.addScope('profile');
         provider.addScope('email');
@@ -371,6 +420,7 @@ export default function Sidebar() {
                 sessionStorage.setItem("provider", "google")
                 // The signed-in user info.
                 const user = result.user;
+                setUserid(user.uid)
                 logEvent(analytics, 'login', { displayName: user.displayName });
 
                 console.log(user);
@@ -378,7 +428,9 @@ export default function Sidebar() {
                 setemail(user.providerData[0].email)
                 setfirstname("Hi, " + user.displayName.split(" ")[0] + " 👋")
                 setRead(0)
+                // setRead2(0)
                 read_data()
+                read_plan()
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top',
@@ -411,7 +463,7 @@ export default function Sidebar() {
         auth.languageCode = "it";
 
         const provider = new FacebookAuthProvider();
-        
+
         // provider.addScope('profile');
         // provider.addScope('email');
 
@@ -424,13 +476,16 @@ export default function Sidebar() {
                 sessionStorage.setItem("provider", "facebook")
                 // The signed-in user info.
                 const user = result.user;
+                setUserid(user.uid)
                 logEvent(analytics, 'login', { displayName: user.displayName });
                 console.log(user);
                 setavatar(user.photoURL)
                 setemail(user.providerData[0].email)
                 setfirstname("Hi, " + user.displayName.split(" ")[0] + " 👋")
                 setRead(0)
+                // setRead2(0)
                 read_data()
+                read_plan()
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top',
@@ -459,8 +514,11 @@ export default function Sidebar() {
         signOut(auth).then(() => {
             setavatar("https://0.gravatar.com/avatar/eb0dce8c76311cc93c1730441aaf4bdd?s=32&d=mm&r=g&s=24")
             setfirstname("")
+            setUserid("")
             sessionStorage.clear()
             setisadmin(0)
+            setDays_left(-1)
+            setPlan("")
             Swal.fire('Logged Out!', '', 'success')
             history.push("/")
             // Sign-out successful.
@@ -486,17 +544,25 @@ export default function Sidebar() {
 
                         <input type="color" className="form-control form-control-color rounded" onInput={changeColor} style={{ padding: "0px 0px", border: "transparent", width: "45px", height: 0 }} id="exampleColorInput" title="Choose your color" autocompleted="" />
                         <li className="nav-item dropdown" style={{ listStyle: "none", width: "auto" }}>
-                            <div className="nav-link dropdown-toggle d-flex align-items-center" data-mdb-toggle="dropdown" aria-expanded="true" style={{ width: "auto", paddingTop: "4px",cursor:"pointer" }}>
+                            <div className="nav-link dropdown-toggle d-flex align-items-center" data-mdb-toggle="dropdown" aria-expanded="true" style={{ width: "auto", paddingTop: "4px", cursor: "pointer" }}>
                                 <img src={avatar} referrerPolicy="no-referrer" className="avatar avatar-24 photo rounded-circle" alt='' style={{ width: "24px" }} />
                             </div>
                             <div className="dropdown-menu dropdown-menu-end p-0" aria-labelledby="userDropdown" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" data-mdb-popper="none" style={{ width: "auto" }}>
                                 {firstname ? <div className="dropdown-item" ><strong style={{ fontSize: "20px" }}>{firstname}</strong></div> : ''}
+                                {firstname && plan.length!==0 ? <div className="dropdown-item" style={{ paddingTop: "0", fontFamily: "SF Mono" }}>{plan} {days_left !== -1 ? `(${days_left} days left)` : "(Free Plan)"}</div> :firstname ?<div className="my-2 d-flex justify-content-center"><div className="spinner-border text-secondary spinner-border-sm" role="status">
+                                    <span className="visually-hidden">Loading...</span>
+                                </div>
+                                </div>:''
+                                }
                                 {firstname && isadmin === 1 ? <Link className="dropdown-item" to="/adminboard">Admin Board</Link> : ''}
+                                {firstname && isadmin === 1 ? <hr className="m-0" /> : ''}
                                 {firstname ? <Link className="dropdown-item" to="/dashboard">DashBoard</Link> : ''}
 
                                 {firstname ? <hr className="m-0" /> : ''}
-                                {!firstname ? <div className="dropdown-item" id="handlelogin" onClick={handlelogin}>Log In</div> :
-                                    <div className="dropdown-item" onClick={handlelogout}>Log Out</div>}
+                                <Link className="dropdown-item" to="/pricing">Pricing</Link>
+                                <hr className="m-0" />
+                                {!firstname ? <Link  to="#" className="dropdown-item" id="handlelogin" onClick={handlelogin}>Log In</Link> :
+                                    <Link to="#" className="dropdown-item" onClick={handlelogout}>Log Out</Link>}
 
                             </div>
                         </li>
@@ -550,7 +616,16 @@ export default function Sidebar() {
                         <About />
                         <Department />
                         <Team />
-                        <Footer/>
+                        <Footer />
+                    </Route>
+                    <Route exact path="/pricing">
+                        <Pricing />
+                    </Route>
+                    <Route exact path="/success01">
+                        <Success01 />
+                    </Route>
+                    <Route exact path="/success02">
+                        <Success02 />
                     </Route>
                     <Route exact path="/dashboard">
                         <Dashboard />

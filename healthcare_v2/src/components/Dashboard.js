@@ -88,7 +88,7 @@ export default function Dashboard() {
                 const querySnapshot = await getDocs(q);
                 querySnapshot.forEach((doc) => {
                     let d = new Date(doc.data().createdAt.toDate())
-                    let new_date=new Date()
+                    // let new_date=new Date()
                     let fulldate = String((d.getDate()+1) + " " + month_names[d.getMonth()] + ", " + d.getFullYear())
                     valuecount_date.push(new Date(fulldate).getTime()+ 86400000)
                     if (d.getMonth() === new Date().getMonth() && d.getFullYear() === new Date().getFullYear()) {
@@ -432,8 +432,8 @@ export default function Dashboard() {
                 </div>
                 </div>
                     :
-                    <div className='container'>
-                        <div className="mb-5" style={{ backgroundColor: "var(--gray-color)", padding: "15px", borderRadius: "10px" }}>
+                    <div className='container pe-lg-5'>
+                        <div className="mb-5" style={{ backgroundColor: "var(--gray-color)", padding:"15px", borderRadius: "10px" }}>
                             <h1 className='display-6' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-8px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Overview</h1>
                             <div className='pos-rel' style={{ paddingBottom: "24px" }}>
                                 <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />

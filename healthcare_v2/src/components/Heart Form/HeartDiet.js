@@ -14,7 +14,10 @@ import ReactApexChart from 'react-apexcharts';
 import Swal from 'sweetalert2';
 import { getFirestore } from "firebase/firestore";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
-import medicine from '../Form Components/disease_medicine.json'
+import jsPDF from 'jspdf';
+import img from '../../assets/RAPIDCARE.png'
+import medicine from './Heart_Deases_Advance.json'
+import medicine2 from '../Form Components/disease_medicine.json'
 
 export default function HeartDiet() {
   const firebaseConfig = {
@@ -51,7 +54,7 @@ export default function HeartDiet() {
         gender: sessionStorage.getItem("user_gender"),
         symptoms: (sessionStorage.getItem("Selected")).split(","),
         disease: "Heart Disease",
-        medicine: disease > 0.5 ? medicine[parseInt(sessionStorage.getItem("Disease"))].Medicine : "No Medication",
+        medicine: disease > 0.5 ? medicine2[parseInt(sessionStorage.getItem("Disease"))].Medicine : "No Medication",
         country: country,
         city: city,
         latitude: lati,
@@ -106,7 +109,127 @@ export default function HeartDiet() {
       }
     }
   }
+  const doc = new jsPDF();
+  const make_pdf = () => {
+    let med=-1;
+    if (disease > 0.5 && disease <= 0.6)
+      med=0
+    else if (disease > 0.6 && disease <= 0.7)
+      med=1
+    else if (disease > 0.7 && disease <= 0.8)
+      med=2
+    else if (disease > 0.8 && disease <= 0.9)
+      med=3
+    else if (disease > 0.9 && disease <= 1.0)
+      med=4
+    const selected = location.state.selected
+    let param = Object.keys(selected);
+    var width = doc.internal.pageSize.getWidth();
+    var height = doc.internal.pageSize.getHeight();
+    doc.addImage(img, 'png', 0, 0, width, height)
 
+    doc.setFontSize(18)
+    doc.setFont('times', 'bold')
+    doc.setTextColor(185, 18, 18)
+    doc.setDrawColor(185, 18, 18)
+    doc.text("PATIENT DETAILS", 11, 60)
+    doc.line(11, 64, width - 12, 64)
+
+    doc.setFont('times', 'normal')
+    doc.setFontSize(14)
+    doc.setTextColor(0, 0, 0)
+    doc.text(`Name : ${sessionStorage.getItem("user_name")}`, 12, 72);
+    doc.text(`Email : ${sessionStorage.getItem("user_email")}`, 12, 81);
+    doc.text(`Date of Birth : ${sessionStorage.getItem("user_age")}`, 12, 90);
+    doc.text(`Gender : ${sessionStorage.getItem("user_gender")}`, 12, 99);
+
+    doc.setFontSize(18)
+    doc.setFont('times', 'bold')
+    doc.setTextColor(185, 18, 18)
+    doc.text("HEART DISEASE TEST", 11, 114)
+    doc.line(11, 118, width - 12, 118)
+    doc.setFontSize(14)
+    doc.setFont('times', 'normal')
+    doc.setTextColor(0, 0, 0)
+    let y = 117
+    param.forEach((sym) => {
+      y = y + 9
+      if (y >= 275) {
+        y = 60
+        doc.addPage()
+        doc.addImage(img, 'png', 0, 0, width, height)
+      }
+      return (
+        doc.text(`• ${sym} : ${selected[sym]}`, 11, y)
+      )
+    })
+    doc.setFontSize(18)
+    doc.setFont('times', 'bold')
+    doc.setTextColor(185, 18, 18)
+    if (y >= 275) {
+      y = 60
+      doc.addPage()
+      doc.addImage(img, 'png', 0, 0, width, height)
+    }
+    doc.text("HEART DISEASE REPORT", 10, y + 15)
+    doc.line(11, y + 19, width - 12, y + 19)
+    y = y + 15
+    doc.setFontSize(14)
+    doc.setFont('times', 'normal')
+    doc.setTextColor(0, 0, 0)
+    doc.text(`• ${disease > 0.5 ? "Positive" : "Negative"}`, 11, y + 12)
+    y = y + 12
+    if (y >= 275) {
+      y = 60
+      doc.addPage()
+      doc.addImage(img, 'png', 0, 0, width, height)
+    }
+    doc.setFontSize(18)
+    doc.setFont('times', 'bold')
+    doc.setTextColor(185, 18, 18)
+    doc.text("MEDICINES", 10, y + 15)
+    doc.line(11, y + 19, width - 12, y + 19)
+    y = y + 15
+    if (disease > 0.5 ) {
+      doc.setFontSize(14)
+      doc.setFont('times', 'normal')
+      doc.setTextColor(0, 0, 0)
+      doc.text(`• ${medicine[med]["Medicine1"]}`, 11, y + 12)
+      y = y + 12
+      if (y >= 275) {
+        y = 60
+        doc.addPage()
+        doc.addImage(img, 'png', 0, 0, width, height)
+      }
+      doc.text(`• ${medicine[med]["Medicine2"]}`, 11, y + 9)
+      y = y + 9
+      if (y >= 275) {
+        y = 60
+        doc.addPage()
+        doc.addImage(img, 'png', 0, 0, width, height)
+      }
+      doc.text(`• ${medicine[med]["Medicine3"]}`, 11, y + 9)
+      y = y + 9
+      if (y >= 275) {
+        y = 60
+        doc.addPage()
+        doc.addImage(img, 'png', 0, 0, width, height)
+      }
+    }
+    else {
+      doc.setFontSize(14)
+      doc.setFont('times', 'normal')
+      doc.setTextColor(0, 0, 0)
+      doc.text(`• No medication`, 11, y + 12)
+      y = y + 12
+    }
+    const date = new Date();
+    doc.setFontSize(10)
+    doc.setFont('times', 'italic')
+    doc.setTextColor(250, 250, 250)
+    doc.text(`${date}`, 60, 294)
+
+  }
   const history = useHistory()
   const location = useLocation();
   const [disease, setDisease] = useState(-1)
@@ -167,28 +290,40 @@ export default function HeartDiet() {
   };
 
   const handleSubmit = () => {
+    make_pdf()
     Swal.fire({
-      text: 'Do you want to continue Rechecking of other Disease(s)?',
+      text: 'Do you want to Download the Prescription?',
       showCancelButton: true,
-      confirmButtonText: 'Yes',
-      cancelButtonText: 'No',
+      confirmButtonText: '<svg style="margin-bottom:4px;margin-right:2px;" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>Download',
       icon: "question",
     }).then((result) => {
       if (result.isConfirmed) {
-        add_data()
-        history.push("/form/disease")
+        doc.save(`${sessionStorage.getItem("user_name")}_Heart_Prescription.pdf`);
       }
-      else {
-        add_data()
-        Swal.fire({
-          title: 'Thank You',
-          showCancelButton: true,
-          cancelButtonText: '<svg style="margin-bottom:4px;margin-right:2px;" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M685.4 354.8c0-4.4-3.6-8-8-8l-66 .3L512 465.6l-99.3-118.4-66.1-.3c-4.4 0-8 3.5-8 8 0 1.9.7 3.7 1.9 5.2l130.1 155L340.5 670a8.32 8.32 0 0 0-1.9 5.2c0 4.4 3.6 8 8 8l66.1-.3L512 564.4l99.3 118.4 66 .3c4.4 0 8-3.5 8-8 0-1.9-.7-3.7-1.9-5.2L553.5 515l130.1-155c1.2-1.4 1.8-3.3 1.8-5.2z"></path><path d="M512 65C264.6 65 64 265.6 64 513s200.6 448 448 448 448-200.6 448-448S759.4 65 512 65zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg>Close',
-          confirmButtonText: '<a href="https://docs.google.com/forms/d/e/1FAIpQLSdqZpTmO4AV9LjyzVWImxIca0uckuR1f7bAJQWErWureyrH0Q/viewform?usp=sf_link" target="_blank" style="color:#fff"><svg style="margin-bottom:2px;margin-right:2px;" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17l-.59.59-.58.58V4h16v12zm-9-4h2v2h-2zm0-6h2v4h-2z"></path></svg>Feedback</a>',
-          icon: "success",
-        })
-        history.push("/")
-      }
+      Swal.fire({
+        text: 'Do you want to continue Rechecking of other Disease(s)?',
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        icon: "question",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          add_data()
+          history.push("/form/disease")
+        }
+        else {
+
+          add_data()
+          Swal.fire({
+            title: 'Thank You',
+            showCancelButton: true,
+            cancelButtonText: '<svg style="margin-bottom:4px;margin-right:2px;" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M685.4 354.8c0-4.4-3.6-8-8-8l-66 .3L512 465.6l-99.3-118.4-66.1-.3c-4.4 0-8 3.5-8 8 0 1.9.7 3.7 1.9 5.2l130.1 155L340.5 670a8.32 8.32 0 0 0-1.9 5.2c0 4.4 3.6 8 8 8l66.1-.3L512 564.4l99.3 118.4 66 .3c4.4 0 8-3.5 8-8 0-1.9-.7-3.7-1.9-5.2L553.5 515l130.1-155c1.2-1.4 1.8-3.3 1.8-5.2z"></path><path d="M512 65C264.6 65 64 265.6 64 513s200.6 448 448 448 448-200.6 448-448S759.4 65 512 65zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg>Close',
+            confirmButtonText: '<a href="https://docs.google.com/forms/d/e/1FAIpQLSdqZpTmO4AV9LjyzVWImxIca0uckuR1f7bAJQWErWureyrH0Q/viewform?usp=sf_link" target="_blank" style="color:#fff"><svg style="margin-bottom:2px;margin-right:2px;" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17l-.59.59-.58.58V4h16v12zm-9-4h2v2h-2zm0-6h2v4h-2z"></path></svg>Feedback</a>',
+            icon: "success",
+          })
+          history.push("/")
+        }
+      })
     })
   }
   const handleBack = () => {
@@ -209,7 +344,7 @@ export default function HeartDiet() {
             <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
           </div>
           <div className='mbox'>
-            <div className="row  mb-5  align-items-center ">
+            <div className="row  align-items-center ">
               <div className="col-xl-6 col-lg-6 mb-4 mb-md-0" style={{ paddingBottom: "20px" }}>
                 <div className='table-responsive-sm'>
                   <table className="table table-sm ">

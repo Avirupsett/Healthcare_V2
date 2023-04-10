@@ -13,8 +13,11 @@ import diet from './Diabetes_Advance_chart.json'
 import ReactApexChart from 'react-apexcharts';
 import { getFirestore } from "firebase/firestore";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
-import medicine from '../Form Components/disease_medicine.json'
+import medicine2 from '../Form Components/disease_medicine.json'
 import Swal from 'sweetalert2';
+import jsPDF from 'jspdf';
+import img from '../../assets/RAPIDCARE.png'
+import medicine from './Diabetes_Advance.json'
 
 export default function DiabetesDiet() {
   const firebaseConfig = {
@@ -51,12 +54,12 @@ export default function DiabetesDiet() {
         gender: sessionStorage.getItem("user_gender"),
         symptoms: (sessionStorage.getItem("Selected")).split(","),
         disease: "Diabetes",
-        medicine: disease>0.5?medicine[parseInt(sessionStorage.getItem("Disease"))].Medicine:"No Medication",
-        country:country,
-        city:city,
-        latitude:lati,
-        longitude:long,
-        region:region,
+        medicine: disease > 0.5 ? medicine2[parseInt(sessionStorage.getItem("Disease"))].Medicine : "No Medication",
+        country: country,
+        city: city,
+        latitude: lati,
+        longitude: long,
+        region: region,
         createdAt: Timestamp.now()
       });
       console.log("Document written with ID: ", docRef.id);
@@ -88,7 +91,7 @@ export default function DiabetesDiet() {
             })
             .then(function (payload) {
               // console.log(payload.location.country.name + ', ' + payload.location.city);
-              setcountry(payload.location.country.name )
+              setcountry(payload.location.country.name)
               setcity(payload.location.city)
               setlati(payload.location.latitude)
               setlong(payload.location.longitude)
@@ -106,6 +109,128 @@ export default function DiabetesDiet() {
       }
     }
   }
+  const doc = new jsPDF();
+  const make_pdf = () => {
+    let med=-1;
+    if (disease > 0.5 && disease <= 0.6)
+      med=0
+    else if (disease > 0.6 && disease <= 0.7)
+      med=1
+    else if (disease > 0.7 && disease <= 0.8)
+      med=2
+    else if (disease > 0.8 && disease <= 0.9)
+      med=3
+    else if (disease > 0.9 && disease <= 1.0)
+      med=4
+    const selected = location.state.selected
+    let param = Object.keys(selected);
+    param.pop();
+    var width = doc.internal.pageSize.getWidth();
+    var height = doc.internal.pageSize.getHeight();
+    doc.addImage(img, 'png', 0, 0, width, height)
+
+    doc.setFontSize(18)
+    doc.setFont('times', 'bold')
+    doc.setTextColor(185, 18, 18)
+    doc.setDrawColor(185, 18, 18)
+    doc.text("PATIENT DETAILS", 11, 60)
+    doc.line(11, 64, width - 12, 64)
+
+    doc.setFont('times', 'normal')
+    doc.setFontSize(14)
+    doc.setTextColor(0, 0, 0)
+    doc.text(`Name : ${sessionStorage.getItem("user_name")}`, 12, 72);
+    doc.text(`Email : ${sessionStorage.getItem("user_email")}`, 12, 81);
+    doc.text(`Date of Birth : ${sessionStorage.getItem("user_age")}`, 12, 90);
+    doc.text(`Gender : ${sessionStorage.getItem("user_gender")}`, 12, 99);
+
+    doc.setFontSize(18)
+    doc.setFont('times', 'bold')
+    doc.setTextColor(185, 18, 18)
+    doc.text("DIABETES TEST", 11, 114)
+    doc.line(11, 118, width - 12, 118)
+    doc.setFontSize(14)
+    doc.setFont('times', 'normal')
+    doc.setTextColor(0, 0, 0)
+    let y = 117
+    param.forEach((sym) => {
+      y = y + 9
+      if (y >= 275) {
+        y = 60
+        doc.addPage()
+        doc.addImage(img, 'png', 0, 0, width, height)
+      }
+      return (
+        doc.text(`• ${sym} : ${selected[sym]}`, 11, y)
+      )
+    })
+    doc.setFontSize(18)
+    doc.setFont('times', 'bold')
+    doc.setTextColor(185, 18, 18)
+    if (y >= 275) {
+      y = 60
+      doc.addPage()
+      doc.addImage(img, 'png', 0, 0, width, height)
+    }
+    doc.text("DIABETES REPORT", 10, y + 15)
+    doc.line(11, y + 19, width - 12, y + 19)
+    y = y + 15
+    doc.setFontSize(14)
+    doc.setFont('times', 'normal')
+    doc.setTextColor(0, 0, 0)
+    doc.text(`• ${disease > 0.5 ? "Positive" : "Negative"}`, 11, y + 12)
+    y = y + 12
+    if (y >= 275) {
+      y = 60
+      doc.addPage()
+      doc.addImage(img, 'png', 0, 0, width, height)
+    }
+    doc.setFontSize(18)
+    doc.setFont('times', 'bold')
+    doc.setTextColor(185, 18, 18)
+    doc.text("MEDICINES", 10, y + 15)
+    doc.line(11, y + 19, width - 12, y + 19)
+    y = y + 15
+    if (disease > 0.5) {
+      doc.setFontSize(14)
+      doc.setFont('times', 'normal')
+      doc.setTextColor(0, 0, 0)
+      doc.text(`• ${medicine[med]["Medicine1"]}`, 11, y + 12)
+      y = y + 12
+      if (y >= 275) {
+        y = 60
+        doc.addPage()
+        doc.addImage(img, 'png', 0, 0, width, height)
+      }
+      doc.text(`• ${medicine[med]["Medicine2"]}`, 11, y + 9)
+      y = y + 9
+      if (y >= 275) {
+        y = 60
+        doc.addPage()
+        doc.addImage(img, 'png', 0, 0, width, height)
+      }
+      doc.text(`• ${medicine[med]["Medicine3"]}`, 11, y + 9)
+      y = y + 9
+      if (y >= 275) {
+        y = 60
+        doc.addPage()
+        doc.addImage(img, 'png', 0, 0, width, height)
+      }
+    }
+    else {
+      doc.setFontSize(14)
+      doc.setFont('times', 'normal')
+      doc.setTextColor(0, 0, 0)
+      doc.text(`• No medication`, 11, y + 12)
+      y = y + 12
+    }
+    const date = new Date();
+    doc.setFontSize(10)
+    doc.setFont('times', 'italic')
+    doc.setTextColor(250, 250, 250)
+    doc.text(`${date}`, 60, 294)
+
+  }
 
   const history = useHistory()
   const location = useLocation();
@@ -116,16 +241,16 @@ export default function DiabetesDiet() {
   }, [location.state.disease])
   const chartData3_2 = {
     chart: {
-        id: "Symptomsmonthlydatadonut",
-        type: "donut"
+      id: "Symptomsmonthlydatadonut",
+      type: "donut"
     },
-    labels: ['Carbohydrate','Protein',
-    'Iron',
-    'Fat',
-    'Calcium',
-    'Sodium'],
+    labels: ['Carbohydrate', 'Protein',
+      'Iron',
+      'Fat',
+      'Calcium',
+      'Sodium'],
     chartOptions: {
-        labels: ['Carbohydrate','Protein',
+      labels: ['Carbohydrate', 'Protein',
         'Iron',
         'Fat',
         'Calcium',
@@ -133,62 +258,74 @@ export default function DiabetesDiet() {
     },
 
     legend: {
-        // position: '',
-        // width: 400
-        // position: 'top',
-        fontSize: '16px',
-        fontFamily: "Calibre R",
-        horizontalAlign: 'center',
-        position: `bottom`,
-        labels: {
-            colors: "var(--text-color)",
-        }
+      // position: '',
+      // width: 400
+      // position: 'top',
+      fontSize: '16px',
+      fontFamily: "Calibre R",
+      horizontalAlign: 'center',
+      position: `bottom`,
+      labels: {
+        colors: "var(--text-color)",
+      }
     },
-    series: [disease>0.5?diet[0]["Carbohydrate"]:diet[1]["Carbohydrate"],
-    disease>0.5?diet[0]["Protein"]:diet[1]["Protein"],
-    disease>0.5?diet[0]["Iron"]:diet[1]["Iron"],
-    disease>0.5?diet[0]["Fat"]:diet[1]["Fat"],
-    disease>0.5?diet[0]["Calcium"]:diet[1]["Calcium"],
-    disease>0.5?diet[0]["Sodium"]:diet[1]["Sodium"]],
+    series: [disease > 0.5 ? diet[0]["Carbohydrate"] : diet[1]["Carbohydrate"],
+    disease > 0.5 ? diet[0]["Protein"] : diet[1]["Protein"],
+    disease > 0.5 ? diet[0]["Iron"] : diet[1]["Iron"],
+    disease > 0.5 ? diet[0]["Fat"] : diet[1]["Fat"],
+    disease > 0.5 ? diet[0]["Calcium"] : diet[1]["Calcium"],
+    disease > 0.5 ? diet[0]["Sodium"] : diet[1]["Sodium"]],
     title: {
-        // text: "Overall Symptoms",
-        align: 'left',
-        margin: 10,
-        offsetX: 10,
-        offsetY: -5,
-        floating: false,
-        style: {
-            fontSize: '24px',
-            fontWeight: 'bold',
-            fontFamily: "Calibre R",
-            color: 'var(--heading-color)'
-        },
+      // text: "Overall Symptoms",
+      align: 'left',
+      margin: 10,
+      offsetX: 10,
+      offsetY: -5,
+      floating: false,
+      style: {
+        fontSize: '24px',
+        fontWeight: 'bold',
+        fontFamily: "Calibre R",
+        color: 'var(--heading-color)'
+      },
     }
-};
+  };
 
   const handleSubmit = () => {
+    make_pdf()
     Swal.fire({
-      text: 'Do you want to continue Rechecking of other Disease(s)?',
+      text: 'Do you want to Download the Prescription?',
       showCancelButton: true,
-      confirmButtonText: 'Yes',
-      cancelButtonText: 'No',
+      confirmButtonText: '<svg style="margin-bottom:4px;margin-right:2px;" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>Download',
       icon: "question",
     }).then((result) => {
       if (result.isConfirmed) {
-        add_data()
-        history.push("/form/disease")
+        doc.save(`${sessionStorage.getItem("user_name")}_Diabetes_Prescription.pdf`);
       }
-      else{
-        add_data()
-        Swal.fire({
-          title: 'Thank You',
-          showCancelButton: true,
-          cancelButtonText:'<svg style="margin-bottom:4px;margin-right:2px;" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M685.4 354.8c0-4.4-3.6-8-8-8l-66 .3L512 465.6l-99.3-118.4-66.1-.3c-4.4 0-8 3.5-8 8 0 1.9.7 3.7 1.9 5.2l130.1 155L340.5 670a8.32 8.32 0 0 0-1.9 5.2c0 4.4 3.6 8 8 8l66.1-.3L512 564.4l99.3 118.4 66 .3c4.4 0 8-3.5 8-8 0-1.9-.7-3.7-1.9-5.2L553.5 515l130.1-155c1.2-1.4 1.8-3.3 1.8-5.2z"></path><path d="M512 65C264.6 65 64 265.6 64 513s200.6 448 448 448 448-200.6 448-448S759.4 65 512 65zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg>Close',
-          confirmButtonText: '<a href="https://docs.google.com/forms/d/e/1FAIpQLSdqZpTmO4AV9LjyzVWImxIca0uckuR1f7bAJQWErWureyrH0Q/viewform?usp=sf_link" target="_blank" style="color:#fff"><svg style="margin-bottom:2px;margin-right:2px;" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17l-.59.59-.58.58V4h16v12zm-9-4h2v2h-2zm0-6h2v4h-2z"></path></svg>Feedback</a>',
-          icon: "success",
-        })
-        history.push("/")
-      }
+      Swal.fire({
+        text: 'Do you want to continue Rechecking of other Disease(s)?',
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        icon: "question",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          add_data()
+          history.push("/form/disease")
+        }
+        else {
+
+          add_data()
+          Swal.fire({
+            title: 'Thank You',
+            showCancelButton: true,
+            cancelButtonText: '<svg style="margin-bottom:4px;margin-right:2px;" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M685.4 354.8c0-4.4-3.6-8-8-8l-66 .3L512 465.6l-99.3-118.4-66.1-.3c-4.4 0-8 3.5-8 8 0 1.9.7 3.7 1.9 5.2l130.1 155L340.5 670a8.32 8.32 0 0 0-1.9 5.2c0 4.4 3.6 8 8 8l66.1-.3L512 564.4l99.3 118.4 66 .3c4.4 0 8-3.5 8-8 0-1.9-.7-3.7-1.9-5.2L553.5 515l130.1-155c1.2-1.4 1.8-3.3 1.8-5.2z"></path><path d="M512 65C264.6 65 64 265.6 64 513s200.6 448 448 448 448-200.6 448-448S759.4 65 512 65zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg>Close',
+            confirmButtonText: '<a href="https://docs.google.com/forms/d/e/1FAIpQLSdqZpTmO4AV9LjyzVWImxIca0uckuR1f7bAJQWErWureyrH0Q/viewform?usp=sf_link" target="_blank" style="color:#fff"><svg style="margin-bottom:2px;margin-right:2px;" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17l-.59.59-.58.58V4h16v12zm-9-4h2v2h-2zm0-6h2v4h-2z"></path></svg>Feedback</a>',
+            icon: "success",
+          })
+          history.push("/")
+        }
+      })
     })
   }
   const handleBack = () => {
@@ -209,96 +346,96 @@ export default function DiabetesDiet() {
             <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
           </div>
           <div className='mbox'>
-          <div className="row  mb-5  align-items-center ">
-            <div className="col-xl-6 col-lg-6 " style={{ paddingBottom: "20px" }}>
-             <div className='table-responsive-sm'>
-              <table className="table table-sm ">
-                <thead>
-                  <tr className="fs-2" style={{ fontFamily: "Calibre M" ,color: "var(--heading-color)"}}>
-                    <th scope="col">#</th>
-                    <th scope="col">Nutrients</th>
-                    <th scope="col">Quantity</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className='fs-4' style={{ fontFamily: "Calibre R" ,color: "var(--text-color)"}}>
-                    <th scope="row">1</th>
-                    <td>Carbohydrate</td>
-                    <td>{disease>0.5?diet[0]["Carbohydrate"]:diet[1]["Carbohydrate"]}g</td>
-                  </tr>
-                  <tr className='fs-4' style={{ fontFamily: "Calibre R" ,color: "var(--text-color)"}}>
-                    <th scope="row">2</th>
-                    <td>Protein</td>
-                    <td>{disease>0.5?diet[0]["Protein"]:diet[1]["Protein"]}g</td>
-                  </tr>
-                  <tr className='fs-4' style={{ fontFamily: "Calibre R" ,color: "var(--text-color)"}}>
-                    <th scope="row">3</th>
-                    <td>Iron</td>
-                    <td>{disease>0.5?diet[0]["Iron"]:diet[1]["Iron"]}g</td>
-                  </tr>
-                  <tr className='fs-4' style={{ fontFamily: "Calibre R" ,color: "var(--text-color)"}}>
-                    <th scope="row">4</th>
-                    <td>Fat</td>
-                    <td>{disease>0.5?diet[0]["Fat"]:diet[1]["Fat"]}g</td>
-                  </tr>
-                  <tr className='fs-4' style={{ fontFamily: "Calibre R" ,color: "var(--text-color)"}}>
-                    <th scope="row">5</th>
-                    <td>Calcium</td>
-                    <td>{disease>0.5?diet[0]["Calcium"]:diet[1]["Calcium"]}g</td>
-                  </tr>
-                  <tr className='fs-4' style={{ fontFamily: "Calibre R" ,color: "var(--text-color)"}}>
-                    <th scope="row">6</th>
-                    <td>Sodium</td>
-                    <td>{disease>0.5?diet[0]["Sodium"]:diet[1]["Sodium"]}g</td>
-                  </tr>
-                  <tr className='fs-4' style={{ fontFamily: "Calibre R" ,color: "var(--text-color)"}}>
-                    <th scope="row">7</th>
-                    <td>Total Kcals per day</td>
-                    <td>{disease>0.5?diet[0]["Total Kcals per day"]:diet[1]["Total Kcals per day"]} kcal</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div className="row  align-items-center ">
+              <div className="col-xl-6 col-lg-6 " style={{ paddingBottom: "20px" }}>
+                <div className='table-responsive-sm'>
+                  <table className="table table-sm ">
+                    <thead>
+                      <tr className="fs-2" style={{ fontFamily: "Calibre M", color: "var(--heading-color)" }}>
+                        <th scope="col">#</th>
+                        <th scope="col">Nutrients</th>
+                        <th scope="col">Quantity</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className='fs-4' style={{ fontFamily: "Calibre R", color: "var(--text-color)" }}>
+                        <th scope="row">1</th>
+                        <td>Carbohydrate</td>
+                        <td>{disease > 0.5 ? diet[0]["Carbohydrate"] : diet[1]["Carbohydrate"]}g</td>
+                      </tr>
+                      <tr className='fs-4' style={{ fontFamily: "Calibre R", color: "var(--text-color)" }}>
+                        <th scope="row">2</th>
+                        <td>Protein</td>
+                        <td>{disease > 0.5 ? diet[0]["Protein"] : diet[1]["Protein"]}g</td>
+                      </tr>
+                      <tr className='fs-4' style={{ fontFamily: "Calibre R", color: "var(--text-color)" }}>
+                        <th scope="row">3</th>
+                        <td>Iron</td>
+                        <td>{disease > 0.5 ? diet[0]["Iron"] : diet[1]["Iron"]}g</td>
+                      </tr>
+                      <tr className='fs-4' style={{ fontFamily: "Calibre R", color: "var(--text-color)" }}>
+                        <th scope="row">4</th>
+                        <td>Fat</td>
+                        <td>{disease > 0.5 ? diet[0]["Fat"] : diet[1]["Fat"]}g</td>
+                      </tr>
+                      <tr className='fs-4' style={{ fontFamily: "Calibre R", color: "var(--text-color)" }}>
+                        <th scope="row">5</th>
+                        <td>Calcium</td>
+                        <td>{disease > 0.5 ? diet[0]["Calcium"] : diet[1]["Calcium"]}g</td>
+                      </tr>
+                      <tr className='fs-4' style={{ fontFamily: "Calibre R", color: "var(--text-color)" }}>
+                        <th scope="row">6</th>
+                        <td>Sodium</td>
+                        <td>{disease > 0.5 ? diet[0]["Sodium"] : diet[1]["Sodium"]}g</td>
+                      </tr>
+                      <tr className='fs-4' style={{ fontFamily: "Calibre R", color: "var(--text-color)" }}>
+                        <th scope="row">7</th>
+                        <td>Total Kcals per day</td>
+                        <td>{disease > 0.5 ? diet[0]["Total Kcals per day"] : diet[1]["Total Kcals per day"]} kcal</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="col-xl-6 col-lg-6 " style={{ paddingBottom: "20px" }}>
+
+                <ReactApexChart options={chartData3_2} series={chartData3_2.series} type="donut" />
               </div>
             </div>
-            <div className="col-xl-6 col-lg-6 " style={{ paddingBottom: "20px" }}>
-             
-            <ReactApexChart options={chartData3_2} series={chartData3_2.series} type="donut"  />
-            </div>
-          </div>
           </div>
           <div className="row  mb-9  align-items-start ">
             <div className="col-xl-6 col-lg-6 col-md-6 " >
-            <div className='mbox'>
-              <h1 className='display-6' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Food To Eat</h1>
-              <div className='pos-rel' style={{ paddingBottom: "15px" }}>
-                <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
-              </div>
-              <div className='fs-4 selected2' style={{ fontFamily: "Calibre R", paddingLeft: "10px", paddingRight: "25px" }}>
-                <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToEat[0]["food1"] : foodToEat[1]["food1"]}</li>
-                <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToEat[0]["food2"] : foodToEat[1]["food2"]}</li>
-                <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToEat[0]["food3"] : foodToEat[1]["food3"]}</li>
-                <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToEat[0]["food4"] : foodToEat[1]["food4"]}</li>
-                <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToEat[0]["food5"] : foodToEat[1]["food5"]}</li>
-                <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToEat[0]["food6"] : foodToEat[1]["food6"]}</li>
-              </div>
+              <div className='mbox'>
+                <h1 className='display-6' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Food To Eat</h1>
+                <div className='pos-rel' style={{ paddingBottom: "15px" }}>
+                  <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
+                </div>
+                <div className='fs-4 selected2' style={{ fontFamily: "Calibre R", paddingLeft: "10px", paddingRight: "25px" }}>
+                  <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToEat[0]["food1"] : foodToEat[1]["food1"]}</li>
+                  <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToEat[0]["food2"] : foodToEat[1]["food2"]}</li>
+                  <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToEat[0]["food3"] : foodToEat[1]["food3"]}</li>
+                  <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToEat[0]["food4"] : foodToEat[1]["food4"]}</li>
+                  <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToEat[0]["food5"] : foodToEat[1]["food5"]}</li>
+                  <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToEat[0]["food6"] : foodToEat[1]["food6"]}</li>
+                </div>
               </div>
 
             </div>
             <div className="col-xl-6 col-lg-6 col-md-6  mb-4 ">
-            <div className='mbox'>
-              <h1 className='display-6' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Food To Avoid</h1>
-              <div className='pos-rel' style={{ paddingBottom: "15px" }}>
-                <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
-              </div>
-              <div className='fs-4 selected2' style={{ fontFamily: "Calibre R", paddingLeft: "10px", paddingRight: "25px" }}>
-                <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToAvoid[0]["food1"] : foodToAvoid[1]["food1"]}</li>
-                <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToAvoid[0]["food2"] : foodToAvoid[1]["food2"]}</li>
-                <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToAvoid[0]["food3"] : foodToAvoid[1]["food3"]}</li>
-                <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToAvoid[0]["food4"] : foodToAvoid[1]["food4"]}</li>
-                <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToAvoid[0]["food5"] : foodToAvoid[1]["food5"]}</li>
-                <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToAvoid[0]["food6"] : foodToAvoid[1]["food6"]}</li>
+              <div className='mbox'>
+                <h1 className='display-6' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-2px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Food To Avoid</h1>
+                <div className='pos-rel' style={{ paddingBottom: "15px" }}>
+                  <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
+                </div>
+                <div className='fs-4 selected2' style={{ fontFamily: "Calibre R", paddingLeft: "10px", paddingRight: "25px" }}>
+                  <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToAvoid[0]["food1"] : foodToAvoid[1]["food1"]}</li>
+                  <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToAvoid[0]["food2"] : foodToAvoid[1]["food2"]}</li>
+                  <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToAvoid[0]["food3"] : foodToAvoid[1]["food3"]}</li>
+                  <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToAvoid[0]["food4"] : foodToAvoid[1]["food4"]}</li>
+                  <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToAvoid[0]["food5"] : foodToAvoid[1]["food5"]}</li>
+                  <li style={{ listStyleType: "square", fontFamily: "Calibre R", color: "var(--text-color)" }}>{disease > 0.5 ? foodToAvoid[0]["food6"] : foodToAvoid[1]["food6"]}</li>
 
-              </div>
+                </div>
               </div>
             </div>
           </div>
