@@ -26,6 +26,7 @@ const app = initializeApp(firebaseConfig);
 useEffect(() => {
     authenticate()
 
+
 })
 const history = useHistory()
 const [auth, setauth] = useState(0)
@@ -85,6 +86,24 @@ const authenticate = () => {
     //   .catch((error) => {
     //     console.log(error);
     //   });
+    //     fetch("/view", {
+    //   method: "GET",
+    // }).then(response => response.status).then(
+    //   status=>{
+    //     if(status!==200){
+    //       Swal.fire({
+    //         title: 'Server Error',
+    //         text: 'Sorry for the inconvenience, try to refresh the page or press try again to continue..',
+    //         showCancelButton: true,
+    //         confirmButtonText: 'Try Again',
+    //         cancelButtonText: 'Close',
+    //         icon: "error",
+    //       }).then((result) => {
+    //         window.location.reload()
+    //     })
+    //     }
+    //   }
+    // )
       fetch("/multipredict", {
         method: "POST",
         body: bodycontent,

@@ -89,10 +89,10 @@ export default function Dashboard() {
                 querySnapshot.forEach((doc) => {
                     let d = new Date(doc.data().createdAt.toDate())
                     // let new_date=new Date()
-                    let fulldate = String((d.getDate()+1) + " " + month_names[d.getMonth()] + ", " + d.getFullYear())
-                    valuecount_date.push(new Date(fulldate).getTime()+ 86400000)
+                    let fulldate = String((d.getDate() + 1) + " " + month_names[d.getMonth()] + ", " + d.getFullYear())
+                    valuecount_date.push(new Date(fulldate).getTime() + 86400000)
                     if (d.getMonth() === new Date().getMonth() && d.getFullYear() === new Date().getFullYear()) {
-                        valuecount_monthly.push(new Date(fulldate).getTime()+ 86400000)
+                        valuecount_monthly.push(new Date(fulldate).getTime() + 86400000)
                     }
                     value.push([n, doc.data().name, doc.data().dob, doc.data().gender, doc.data().symptoms, doc.data().disease, doc.data().medicine, fulldate])
                     // console.log(`${doc.id} => ${doc.data().createdAt.toDate()}`);
@@ -268,11 +268,11 @@ export default function Dashboard() {
                     fontFamily: 'Calibre R',
                 }
             },
-            axisBorder:{
-                show:false
+            axisBorder: {
+                show: false
             }
         },
-        yaxis:{
+        yaxis: {
             floating: false,
             labels: {
                 style: {
@@ -282,24 +282,24 @@ export default function Dashboard() {
                 }
             }
         },
-        grid:{
-            strokeDashArray:4
+        grid: {
+            strokeDashArray: 4
         },
         stroke: {
             curve: 'smooth',
             colors: ["var(--first-color)"],
-            width:4
+            width: 4
         },
         fill: {
-            colors:"var(--first-color)",
+            colors: "var(--first-color)",
             type: "gradient",
             gradient: {
                 shade: "light",
                 shadeIntensity: 1,
                 gradientToColors: ["var(--gray-color)"],
-                    opacityFrom: 0.8,
-                    opacityTo: 0.5,
-                    stops: [0,90,100]
+                opacityFrom: 0.8,
+                opacityTo: 0.5,
+                stops: [0, 90, 100]
             }
         },
         legend: {
@@ -307,10 +307,10 @@ export default function Dashboard() {
             // width: 400
             // position: 'top',
         },
-  
-  dataLabels: {
-    enabled: false
-  },
+
+        dataLabels: {
+            enabled: false
+        },
         series: [
             {
                 name: "No. of Entries",
@@ -348,11 +348,11 @@ export default function Dashboard() {
                     fontFamily: 'Calibre R',
                 }
             },
-            axisBorder:{
-                show:false
+            axisBorder: {
+                show: false
             },
         },
-        yaxis:{
+        yaxis: {
             floating: false,
             labels: {
                 style: {
@@ -362,30 +362,30 @@ export default function Dashboard() {
                 }
             }
         },
-        grid:{
-            strokeDashArray:4
+        grid: {
+            strokeDashArray: 4
         },
         stroke: {
             curve: 'smooth',
             colors: ["var(--first-color)"],
-            width:4
+            width: 4
         },
         fill: {
-            colors:"var(--first-color)",
+            colors: "var(--first-color)",
             type: "gradient",
             gradient: {
                 shade: "light",
                 shadeIntensity: 1,
                 gradientToColors: ["var(--gray-color)"],
-                    opacityFrom: 0.8,
-                    opacityTo: 0.5,
-                    stops: [0,90,100]
+                opacityFrom: 0.8,
+                opacityTo: 0.5,
+                stops: [0, 90, 100]
             }
         },
-        
-  dataLabels: {
-    enabled: false
-  },
+
+        dataLabels: {
+            enabled: false
+        },
         legend: {
             // position: '',
             // width: 400
@@ -433,17 +433,17 @@ export default function Dashboard() {
                 </div>
                     :
                     <div className='container pe-lg-5'>
-                        <div className="mb-5" style={{ backgroundColor: "var(--gray-color)", padding:"15px", borderRadius: "10px" }}>
+                        <div className="mb-5" style={{ backgroundColor: "var(--gray-color)", padding: "15px", borderRadius: "10px" }}>
                             <h1 className='display-6' style={{ fontFamily: "Calibre M", lineHeight: 1.1, color: "var(--heading-color)", marginBottom: "-8px", letterSpacing: "-0.2px", marginTop: window.innerWidth > 700 ? "5px" : "10px" }}>Overview</h1>
                             <div className='pos-rel' style={{ paddingBottom: "24px" }}>
                                 <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
                             </div>
                             <div className="row  justify-content-between mb-2 flex-wrap">
-                                <div className="col-xl-6 col-lg-6 mb-4  pe-0 " style={{  borderRadius: "10px" }}>
-                                    <ReactApexChart options={chartData} series={chartData.series} type="area"/>
+                                <div className="col-xl-6 col-lg-6 mb-4  pe-0 " style={{ borderRadius: "10px" }}>
+                                    <ReactApexChart options={chartData} series={chartData.series} type="area" />
                                 </div>
-                                <div className="col-xl-6 col-lg-6 mb-4  pe-0 " style={{  borderRadius: "10px" }}>
-                                    <ReactApexChart options={chartData2} series={chartData2.series} type="area"/>
+                                <div className="col-xl-6 col-lg-6 mb-4  pe-0 " style={{ borderRadius: "10px" }}>
+                                    <ReactApexChart options={chartData2} series={chartData2.series} type="area" />
                                 </div>
                             </div>
                         </div>
@@ -451,17 +451,19 @@ export default function Dashboard() {
                         <div className='pos-rel' style={{ paddingBottom: "24px" }}>
                             <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
                         </div>
-                        <CacheProvider value={muiCache} >
-                            <ThemeProvider theme={createTheme()}>
+                       
+                            <CacheProvider value={muiCache} >
+                                <ThemeProvider theme={createTheme()}>
 
-                                <MUIDataTable
-                                    title={""}
-                                    data={values}
-                                    columns={columns}
-                                    options={options}
-                                />
-                            </ThemeProvider>
-                        </CacheProvider>
+                                    <MUIDataTable
+                                        title={""}
+                                        data={values}
+                                        columns={columns}
+                                        options={options}
+                                    />
+                                </ThemeProvider>
+                            </CacheProvider>
+                        
                     </div>}
 
             </motion.div>

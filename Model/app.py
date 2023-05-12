@@ -11,6 +11,7 @@ model=load(open("./Prediction_Deases_final_1.joblib",'rb'))
 model2=load(open("./Prediction_Deases_final_2.joblib",'rb'))
 diabetes=load(open("./Diabetes_deases.joblib",'rb'))
 heart=load(open("./Heart_deases.joblib",'rb'))
+df=pd.read_csv("traintest.csv")
 
 app=Flask(__name__)
 app.url_map.strict_slashes = False
@@ -42,6 +43,10 @@ def predict():
 def multipredict():
     # get data
     data = request.get_json(force=True)
+    input=[]
+    for i in data:
+        if(data[i]==1):
+            input.append(i)
 
     # convert data into dataframe
     data.update((x, [y]) for x, y in data.items())
@@ -61,16 +66,18 @@ def multipredict():
         int(result[0][1]):0,
         int(result[0][2]):0,
     }
-    df=pd.read_csv("traintest.csv")
+   
+    modified_df=df[input]
+    data_df=data_df[input]
     re=[]
-    for i in range(133):
-        if(data_df.iloc[0,i]==1 and df.iloc[int(result[0][0]),i+1]>0):
+    for i in range(len(input)):
+        if(data_df.iloc[0,i]==1 and modified_df.iloc[int(result[0][0]),i]>0):
             disease_dict[int(result[0][0])]=disease_dict[int(result[0][0])]+1
 
-        if(data_df.iloc[0,i]==1 and df.iloc[int(result[0][1]),i+1]>0):
+        if(data_df.iloc[0,i]==1 and modified_df.iloc[int(result[0][1]),i]>0):
             disease_dict[int(result[0][1])]=disease_dict[int(result[0][1])]+1
 
-        if(data_df.iloc[0,i]==1 and df.iloc[int(result[0][2]),i+1]>0):
+        if(data_df.iloc[0,i]==1 and modified_df.iloc[int(result[0][2]),i]>0):
             disease_dict[int(result[0][2])]=disease_dict[int(result[0][2])]+1
 
     for i in disease_dict:

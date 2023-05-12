@@ -1,0 +1,7 @@
+# Redirects from what the browser requests to what we serve
+/predict            https://disease-diagnosis.onrender.com/predict         200
+/view            https://disease-diagnosis.onrender.com/view         200
+/multipredict            https://disease-diagnosis.onrender.com/multipredict        200
+/diabetes            https://disease-diagnosis.onrender.com/diabetes        200
+/heart            https://disease-diagnosis.onrender.com/heart        200
+/*                  /index.html                                             200

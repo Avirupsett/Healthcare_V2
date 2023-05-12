@@ -22,6 +22,9 @@ function App() {
     setTimeout(() => {
       setloading(0);
     }, 3500);
+    fetch("/view", {
+      method: "GET",
+    }).then(response => console.log("Server Response: "+response.status))
   }, []);
 
   HeadingFont.load().then(() => {

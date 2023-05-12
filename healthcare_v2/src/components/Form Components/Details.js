@@ -49,9 +49,7 @@ export default function Details() {
                     if(!user.providerData[0].email){
                         setdisable(false)
                     }
-                    fetch("/view", {
-                        method: "GET",
-                      }).then(response => response.text())
+                    
                 }).catch((error) => {
                     history.push('/')
                     document.getElementById("handlelogin").click()

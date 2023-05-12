@@ -1418,6 +1418,7 @@ export default function Adminboard() {
                         <div className='pos-rel' style={{ paddingBottom: "24px" }}>
                             <img src={img2} alt="" style={{ filter: "grayScale(1) opacity(0.6) drop-shadow(0 0 0 var(--first-color))" }} />
                         </div>
+                     
                          <CacheProvider value={muiCache} >
                             <ThemeProvider theme={createTheme()}>
 
@@ -1429,6 +1430,7 @@ export default function Adminboard() {
                                 />
                             </ThemeProvider>
                         </CacheProvider> 
+                        
                     </div>}
             </motion.div>
 
